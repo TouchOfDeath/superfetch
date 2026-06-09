@@ -1,0 +1,4 @@
+superfetch
+*.o
+.cache/
+*.deb

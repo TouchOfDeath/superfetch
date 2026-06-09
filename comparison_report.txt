@@ -1,0 +1,168 @@
+=== Superfetch vs Fastfetch Aggressive Comparison ===
+
+1. Binary Size
+------------------------------
+Superfetch: 77K
+Fastfetch: 1.8M
+
+2. Execution Time (hyperfine)
+------------------------------
+Benchmark 1: ./superfetch
+  Time (mean ± σ):     101.2 ms ±   0.2 ms    [User: 1.1 ms, System: 2.1 ms]
+  Range (min … max):   101.0 ms … 102.1 ms    29 runs
+ 
+Benchmark 2: fastfetch
+  Time (mean ± σ):       6.5 ms ±   1.6 ms    [User: 1.1 ms, System: 3.3 ms]
+  Range (min … max):     4.3 ms …  26.4 ms    534 runs
+ 
+  Warning: Command took less than 5 ms to complete. Note that the results might be inaccurate because hyperfine can not calibrate the shell startup time much more precise than this limit. You can try to use the `-N`/`--shell=none` option to disable the shell completely.
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
+ 
+Summary
+  fastfetch ran
+   15.62 ± 3.83 times faster than ./superfetch
+
+3. Syscalls (strace -c)
+------------------------------
+Superfetch:
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 58.09    0.000650          30        21           fstat
+ 14.21    0.000159         159         1           futex
+ 10.19    0.000114           4        27           read
+  5.90    0.000066           3        21           close
+  4.83    0.000054           2        24         4 openat
+  2.86    0.000032          16         2           sendto
+  1.70    0.000019           3         5           recvmsg
+  0.63    0.000007           7         1           socket
+  0.45    0.000005           2         2           statfs
+  0.45    0.000005           1         3           getdents64
+  0.27    0.000003           3         1           write
+  0.27    0.000003           3         1           bind
+  0.18    0.000002           2         1           getsockname
+  0.00    0.000000           0        12           mmap
+  0.00    0.000000           0         7           mprotect
+  0.00    0.000000           0         1           munmap
+  0.00    0.000000           0         3           brk
+  0.00    0.000000           0         1           rt_sigaction
+  0.00    0.000000           0         9           rt_sigprocmask
+  0.00    0.000000           0         2         2 ioctl
+  0.00    0.000000           0         2           pread64
+  0.00    0.000000           0         1         1 access
+  0.00    0.000000           0         1           execve
+  0.00    0.000000           0         2           uname
+  0.00    0.000000           0         1           sysinfo
+  0.00    0.000000           0         1           arch_prctl
+  0.00    0.000000           0         1           set_tid_address
+  0.00    0.000000           0         1           set_robust_list
+  0.00    0.000000           0         1           prlimit64
+  0.00    0.000000           0         1           getrandom
+  0.00    0.000000           0         1           rseq
+  0.00    0.000000           0         4           clone3
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.001119           6       162         7 total
+
+Fastfetch:
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 77.44    0.001150           6       173           read
+ 11.31    0.000168           0       274       113 openat
+  3.84    0.000057           0       165           close
+  2.76    0.000041           1        21        16 readlink
+  2.69    0.000040           0       149           fstat
+  0.54    0.000008           0        70           getdents64
+  0.54    0.000008           0        61        32 newfstatat
+  0.27    0.000004           0        80           mmap
+  0.20    0.000003           3         1           statfs
+  0.20    0.000003           3         1           statx
+  0.13    0.000002           1         2           write
+  0.07    0.000001           0         5           lseek
+  0.00    0.000000           0        38           poll
+  0.00    0.000000           0        15           mprotect
+  0.00    0.000000           0        29           munmap
+  0.00    0.000000           0         5           brk
+  0.00    0.000000           0         3           rt_sigaction
+  0.00    0.000000           0         1           rt_sigprocmask
+  0.00    0.000000           0         3         3 ioctl
+  0.00    0.000000           0         6           pread64
+  0.00    0.000000           0        19           writev
+  0.00    0.000000           0        11         1 access
+  0.00    0.000000           0         1           getpid
+  0.00    0.000000           0         4           socket
+  0.00    0.000000           0         4         3 connect
+  0.00    0.000000           0         3         1 recvfrom
+  0.00    0.000000           0        18           recvmsg
+  0.00    0.000000           0         1           shutdown
+  0.00    0.000000           0         1           getsockname
+  0.00    0.000000           0         1           getpeername
+  0.00    0.000000           0         1           execve
+  0.00    0.000000           0         2           uname
+  0.00    0.000000           0         4           fcntl
+  0.00    0.000000           0         1           getcwd
+  0.00    0.000000           0         1           getuid
+  0.00    0.000000           0         1           getppid
+  0.00    0.000000           0         1           arch_prctl
+  0.00    0.000000           0         1           futex
+  0.00    0.000000           0         1           set_tid_address
+  0.00    0.000000           0         1           set_robust_list
+  0.00    0.000000           0         1           prlimit64
+  0.00    0.000000           0         1           getrandom
+  0.00    0.000000           0         1           rseq
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.001485           1      1182       169 total
+
+4. Memory Usage (Maximum Resident Set Size)
+------------------------------
+Superfetch:
+	Command being timed: "./superfetch"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 2%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.10
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6972
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 186
+	Voluntary context switches: 6
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Fastfetch:
+	Command being timed: "fastfetch"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 42%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6292
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 672
+	Voluntary context switches: 58
+	Involuntary context switches: 2
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+5. Output Structure
+------------------------------
+Superfetch: 58 lines, 3959 characters
+Fastfetch:  41 lines, 1592 characters

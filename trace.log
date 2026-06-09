@@ -1,0 +1,649 @@
+12:52:02.037818 execve("./superfetch", ["./superfetch"], 0x7fff7323e918 /* 78 vars */) = 0 <0.000204>
+12:52:02.038122 brk(NULL)               = 0x5d8ebc50a000 <0.000005>
+12:52:02.038167 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ce1c424a000 <0.000008>
+12:52:02.038197 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory) <0.000008>
+12:52:02.038297 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 10 <0.000008>
+12:52:02.038326 fstat(10, {st_mode=S_IFREG|0644, st_size=151039, ...}) = 0 <0.000005>
+12:52:02.038355 mmap(NULL, 151039, PROT_READ, MAP_PRIVATE, 10, 0) = 0x7ce1c4225000 <0.000007>
+12:52:02.038376 close(10)               = 0 <0.000006>
+12:52:02.038403 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 10 <0.000008>
+12:52:02.038428 read(10, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\220\243\2\0\0\0\0\0"..., 832) = 832 <0.000006>
+12:52:02.038452 pread64(10, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784 <0.000006>
+12:52:02.038474 fstat(10, {st_mode=S_IFREG|0755, st_size=2125328, ...}) = 0 <0.000005>
+12:52:02.038498 pread64(10, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784 <0.000007>
+12:52:02.038521 mmap(NULL, 2170256, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 10, 0) = 0x7ce1c4000000 <0.000008>
+12:52:02.038544 mmap(0x7ce1c4028000, 1605632, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 10, 0x28000) = 0x7ce1c4028000 <0.000012>
+12:52:02.038572 mmap(0x7ce1c41b0000, 323584, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 10, 0x1b0000) = 0x7ce1c41b0000 <0.000012>
+12:52:02.038601 mmap(0x7ce1c41ff000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 10, 0x1fe000) = 0x7ce1c41ff000 <0.000010>
+12:52:02.038631 mmap(0x7ce1c4205000, 52624, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7ce1c4205000 <0.000007>
+12:52:02.038665 close(10)               = 0 <0.000009>
+12:52:02.038702 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ce1c4222000 <0.000015>
+12:52:02.038750 arch_prctl(ARCH_SET_FS, 0x7ce1c4222740) = 0 <0.000007>
+12:52:02.038785 set_tid_address(0x7ce1c4222a10) = 72959 <0.000005>
+12:52:02.038805 set_robust_list(0x7ce1c4222a20, 24) = 0 <0.000005>
+12:52:02.038824 rseq(0x7ce1c4223060, 0x20, 0, 0x53053053) = 0 <0.000005>
+12:52:02.038897 mprotect(0x7ce1c41ff000, 16384, PROT_READ) = 0 <0.000130>
+12:52:02.039073 mprotect(0x5d8e82c38000, 4096, PROT_READ) = 0 <0.000014>
+12:52:02.039111 mprotect(0x7ce1c428a000, 8192, PROT_READ) = 0 <0.000011>
+12:52:02.039149 prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0 <0.000005>
+12:52:02.039190 munmap(0x7ce1c4225000, 151039) = 0 <0.000015>
+12:52:02.039230 getrandom("\x77\xe9\xd9\x75\x94\x4c\xba\xc9", 8, GRND_NONBLOCK) = 8 <0.000007>
+12:52:02.039258 brk(NULL)               = 0x5d8ebc50a000 <0.000005>
+12:52:02.039289 brk(0x5d8ebc52b000)     = 0x5d8ebc52b000 <0.000049>
+12:52:02.039376 openat(AT_FDCWD, "/proc/stat", O_RDONLY) = 10 <0.000024>
+12:52:02.039436 fstat(10, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0 <0.000047>
+12:52:02.039509 read(10, "cpu  329554 1962 81460 2638106 8"..., 1024) = 1024 <0.000046>
+12:52:02.039578 close(10)               = 0 <0.000011>
+12:52:02.039623 rt_sigaction(SIGRT_1, {sa_handler=0x7ce1c4099530, sa_mask=[], sa_flags=SA_RESTORER|SA_ONSTACK|SA_RESTART|SA_SIGINFO, sa_restorer=0x7ce1c4045330}, NULL, 8) = 0 <0.000009>
+12:52:02.039676 rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0 <0.000006>
+12:52:02.039703 mmap(NULL, 20480, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7ce1c4245000 <0.000013>
+12:52:02.039735 mprotect(0x7ce1c4246000, 16384, PROT_READ|PROT_WRITE) = 0 <0.000011>
+12:52:02.039770 rt_sigprocmask(SIG_BLOCK, ~[], [], 8) = 0 <0.000005>
+12:52:02.039794 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7ce1c4249990, parent_tid=0x7ce1c4249990, exit_signal=0, stack=0x7ce1c4245000, stack_size=0x3f80, tls=0x7ce1c42496c0}strace: Process 72960 attached
+ => {parent_tid=[72960]}, 88) = 72960 <0.000042>
+[pid 72960] 12:52:02.039865 rseq(0x7ce1c4249fe0, 0x20, 0, 0x53053053 <unfinished ...>
+[pid 72959] 12:52:02.039875 rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid 72960] 12:52:02.039885 <... rseq resumed>) = 0 <0.000011>
+[pid 72959] 12:52:02.039892 <... rt_sigprocmask resumed>NULL, 8) = 0 <0.000010>
+[pid 72960] 12:52:02.039899 set_robust_list(0x7ce1c42499a0, 24 <unfinished ...>
+[pid 72959] 12:52:02.039907 mmap(NULL, 20480, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0 <unfinished ...>
+[pid 72960] 12:52:02.039915 <... set_robust_list resumed>) = 0 <0.000009>
+[pid 72959] 12:52:02.039922 <... mmap resumed>) = 0x7ce1c4240000 <0.000009>
+[pid 72960] 12:52:02.039928 rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid 72959] 12:52:02.039938 mprotect(0x7ce1c4241000, 16384, PROT_READ|PROT_WRITE <unfinished ...>
+[pid 72960] 12:52:02.039946 <... rt_sigprocmask resumed>NULL, 8) = 0 <0.000009>
+[pid 72959] 12:52:02.039953 <... mprotect resumed>) = 0 <0.000009>
+[pid 72960] 12:52:02.039961 openat(AT_FDCWD, "/var/lib/pacman/local", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY <unfinished ...>
+[pid 72959] 12:52:02.039974 rt_sigprocmask(SIG_BLOCK, ~[],  <unfinished ...>
+[pid 72960] 12:52:02.039984 <... openat resumed>) = -1 ENOENT (No such file or directory) <0.000012>
+[pid 72959] 12:52:02.039994 <... rt_sigprocmask resumed>[], 8) = 0 <0.000013>
+[pid 72960] 12:52:02.040002 openat(AT_FDCWD, "/var/lib/dpkg/status", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.040010 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7ce1c4244990, parent_tid=0x7ce1c4244990, exit_signal=0, stack=0x7ce1c4240000, stack_size=0x3f80, tls=0x7ce1c42446c0} <unfinished ...>
+[pid 72960] 12:52:02.040020 <... openat resumed>) = 10 <0.000011>
+[pid 72960] 12:52:02.040040 fstat(10, strace: Process 72961 attached
+ <unfinished ...>
+[pid 72959] 12:52:02.040053 <... clone3 resumed> => {parent_tid=[72961]}, 88) = 72961 <0.000034>
+[pid 72960] 12:52:02.040066 <... fstat resumed>{st_mode=S_IFREG|0644, st_size=3914626, ...}) = 0 <0.000018>
+[pid 72959] 12:52:02.040077 rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid 72961] 12:52:02.040085 rseq(0x7ce1c4244fe0, 0x20, 0, 0x53053053 <unfinished ...>
+[pid 72959] 12:52:02.040094 <... rt_sigprocmask resumed>NULL, 8) = 0 <0.000009>
+[pid 72960] 12:52:02.040102 mmap(NULL, 3914626, PROT_READ, MAP_PRIVATE, 10, 0 <unfinished ...>
+[pid 72959] 12:52:02.040114 mmap(NULL, 20480, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0 <unfinished ...>
+[pid 72961] 12:52:02.040122 <... rseq resumed>) = 0 <0.000029>
+[pid 72959] 12:52:02.040128 <... mmap resumed>) = 0x7ce1c423b000 <0.000008>
+[pid 72960] 12:52:02.040134 <... mmap resumed>) = 0x7ce1c3c00000 <0.000025>
+[pid 72959] 12:52:02.040141 mprotect(0x7ce1c423c000, 16384, PROT_READ|PROT_WRITE <unfinished ...>
+[pid 72961] 12:52:02.040147 set_robust_list(0x7ce1c42449a0, 24 <unfinished ...>
+[pid 72959] 12:52:02.040161 <... mprotect resumed>) = 0 <0.000013>
+[pid 72961] 12:52:02.040167 <... set_robust_list resumed>) = 0 <0.000015>
+[pid 72961] 12:52:02.040187 rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid 72959] 12:52:02.040206 rt_sigprocmask(SIG_BLOCK, ~[],  <unfinished ...>
+[pid 72961] 12:52:02.040217 <... rt_sigprocmask resumed>NULL, 8) = 0 <0.000011>
+[pid 72959] 12:52:02.040229 <... rt_sigprocmask resumed>[], 8) = 0 <0.000016>
+[pid 72959] 12:52:02.040251 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7ce1c423f990, parent_tid=0x7ce1c423f990, exit_signal=0, stack=0x7ce1c423b000, stack_size=0x3f80, tls=0x7ce1c423f6c0} <unfinished ...>
+[pid 72961] 12:52:02.040264 openat(AT_FDCWD, "/proc/cpuinfo", O_RDONLY) = 11 <0.000017>
+strace: Process 72962 attached
+[pid 72959] 12:52:02.040309 <... clone3 resumed> => {parent_tid=[72962]}, 88) = 72962 <0.000047>
+[pid 72961] 12:52:02.040363 fstat(11,  <unfinished ...>
+[pid 72959] 12:52:02.040383 rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid 72962] 12:52:02.040400 rseq(0x7ce1c423ffe0, 0x20, 0, 0x53053053 <unfinished ...>
+[pid 72959] 12:52:02.040410 <... rt_sigprocmask resumed>NULL, 8) = 0 <0.000018>
+[pid 72961] 12:52:02.040417 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=0, ...}) = 0 <0.000038>
+[pid 72959] 12:52:02.040428 openat(AT_FDCWD, "/home/lifelonglearner/.config/superfetch/superfetch.conf", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.040438 <... rseq resumed>) = 0 <0.000029>
+[pid 72959] 12:52:02.040448 <... openat resumed>) = -1 ENOENT (No such file or directory) <0.000011>
+[pid 72961] 12:52:02.040461 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.040510 openat(AT_FDCWD, "/home/lifelonglearner/.cache/wal/colors", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.040520 set_robust_list(0x7ce1c423f9a0, 24 <unfinished ...>
+[pid 72961] 12:52:02.040526 <... read resumed>"processor\t: 0\nvendor_id\t: Genuin"..., 1024) = 1024 <0.000057>
+[pid 72959] 12:52:02.040536 <... openat resumed>) = -1 ENOENT (No such file or directory) <0.000017>
+[pid 72962] 12:52:02.040544 <... set_robust_list resumed>) = 0 <0.000020>
+[pid 72959] 12:52:02.040552 openat(AT_FDCWD, "/home/lifelonglearner/.Xresources", O_RDONLY <unfinished ...>
+[pid 72961] 12:52:02.040561 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.040574 <... openat resumed>) = -1 ENOENT (No such file or directory) <0.000013>
+[pid 72962] 12:52:02.040583 rt_sigprocmask(SIG_SETMASK, [],  <unfinished ...>
+[pid 72961] 12:52:02.040594 <... read resumed>"l_pt avx512cd sha_ni avx512bw av"..., 1024) = 1024 <0.000026>
+[pid 72962] 12:52:02.040604 <... rt_sigprocmask resumed>NULL, 8) = 0 <0.000013>
+[pid 72961] 12:52:02.040612 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.040620 openat(AT_FDCWD, "/sys/bus/pci/devices", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY <unfinished ...>
+[pid 72961] 12:52:02.040630 <... read resumed>"192 KB\nphysical id\t: 0\nsiblings\t"..., 1024) = 1024 <0.000011>
+[pid 72962] 12:52:02.040640 <... openat resumed>) = 13 <0.000013>
+[pid 72961] 12:52:02.040647 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.040657 fstat(13,  <unfinished ...>
+[pid 72959] 12:52:02.040788 openat(AT_FDCWD, "/home/lifelonglearner/.Xdefaults", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.040822 <... fstat resumed>{st_mode=S_IFDIR|0755, st_size=0, ...}) = 0 <0.000157>
+[pid 72961] 12:52:02.040835 <... read resumed>"ip pku ospke avx512_vbmi2 gfni v"..., 1024) = 1024 <0.000183>
+[pid 72959] 12:52:02.040847 <... openat resumed>) = -1 ENOENT (No such file or directory) <0.000035>
+[pid 72960] 12:52:02.040856 munmap(0x7ce1c3c00000, 3914626 <unfinished ...>
+[pid 72959] 12:52:02.040868 openat(AT_FDCWD, "/proc/meminfo", O_RDONLY) = 18 <0.000015>
+[pid 72959] 12:52:02.040903 fstat(18, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0 <0.000007>
+[pid 72959] 12:52:02.040968 read(18, "MemTotal:       16138972 kB\nMemF"..., 1024) = 1024 <0.000146>
+[pid 72960] 12:52:02.041134 <... munmap resumed>) = 0 <0.000272>
+[pid 72959] 12:52:02.041148 read(18,  <unfinished ...>
+[pid 72960] 12:52:02.041156 close(10 <unfinished ...>
+[pid 72959] 12:52:02.041164 <... read resumed>"      71108 kB\nVmallocChunk:    "..., 1024) = 591 <0.000009>
+[pid 72960] 12:52:02.041173 <... close resumed>) = 0 <0.000011>
+[pid 72959] 12:52:02.041180 read(18,  <unfinished ...>
+[pid 72960] 12:52:02.041188 openat(AT_FDCWD, "/lib/apk/db/installed", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.041199 <... read resumed>"", 1024) = 0 <0.000012>
+[pid 72960] 12:52:02.041208 <... openat resumed>) = -1 ENOENT (No such file or directory) <0.000010>
+[pid 72959] 12:52:02.041216 close(18 <unfinished ...>
+[pid 72960] 12:52:02.041224 openat(AT_FDCWD, "/var/lib/flatpak/app", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY <unfinished ...>
+[pid 72959] 12:52:02.041234 <... close resumed>) = 0 <0.000011>
+[pid 72960] 12:52:02.041242 <... openat resumed>) = 10 <0.000010>
+[pid 72959] 12:52:02.041249 openat(AT_FDCWD, "/etc/os-release", O_RDONLY <unfinished ...>
+[pid 72960] 12:52:02.041258 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.041281 <... openat resumed>) = 18 <0.000016>
+[pid 72960] 12:52:02.041293 <... fstat resumed>{st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0 <0.000022>
+[pid 72959] 12:52:02.041304 fstat(18,  <unfinished ...>
+[pid 72960] 12:52:02.041317 getdents64(10,  <unfinished ...>
+[pid 72959] 12:52:02.041332 <... fstat resumed>{st_mode=S_IFREG|0644, st_size=400, ...}) = 0 <0.000020>
+[pid 72960] 12:52:02.041343 <... getdents64 resumed>0x5d8ebc50b730 /* 9 entries */, 32768) = 376 <0.000013>
+[pid 72959] 12:52:02.041354 read(18,  <unfinished ...>
+[pid 72960] 12:52:02.041362 getdents64(10,  <unfinished ...>
+[pid 72959] 12:52:02.041370 <... read resumed>"PRETTY_NAME=\"Ubuntu 24.04.4 LTS\""..., 4096) = 400 <0.000009>
+[pid 72960] 12:52:02.041379 <... getdents64 resumed>0x5d8ebc50b730 /* 0 entries */, 32768) = 0 <0.000011>
+[pid 72960] 12:52:02.041430 close(10)   = 0 <0.000013>
+[pid 72960] 12:52:02.041464 openat(AT_FDCWD, "/home", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 10 <0.000008>
+[pid 72960] 12:52:02.041491 fstat(10, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0 <0.000006>
+[pid 72960] 12:52:02.041515 getdents64(10, 0x5d8ebc50b730 /* 4 entries */, 32768) = 120 <0.000009>
+[pid 72960] 12:52:02.041550 openat(AT_FDCWD, "/home/lifelonglearner/.local/share/flatpak/app", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = -1 ENOENT (No such file or directory) <0.000011>
+[pid 72960] 12:52:02.041585 getdents64(10, 0x5d8ebc50b730 /* 0 entries */, 32768) = 0 <0.000007>
+[pid 72960] 12:52:02.041608 close(10)   = 0 <0.000008>
+[pid 72960] 12:52:02.041631 openat(AT_FDCWD, "/snap", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 10 <0.000008>
+[pid 72960] 12:52:02.041658 fstat(10, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0 <0.000007>
+[pid 72960] 12:52:02.041682 getdents64(10, 0x5d8ebc50b730 /* 39 entries */, 32768) = 1320 <0.000020>
+[pid 72960] 12:52:02.041722 getdents64(10, 0x5d8ebc50b730 /* 0 entries */, 32768) = 0 <0.000006>
+[pid 72960] 12:52:02.041742 close(10)   = 0 <0.000008>
+[pid 72960] 12:52:02.041765 openat(AT_FDCWD, "/home/linuxbrew/.linuxbrew/Cellar", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = -1 ENOENT (No such file or directory) <0.000007>
+[pid 72960] 12:52:02.041792 openat(AT_FDCWD, "/opt/homebrew/Cellar", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = -1 ENOENT (No such file or directory) <0.000007>
+[pid 72960] 12:52:02.041816 openat(AT_FDCWD, "/usr/local/Cellar", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = -1 ENOENT (No such file or directory) <0.000007>
+[pid 72960] 12:52:02.041848 rt_sigprocmask(SIG_BLOCK, ~[RT_1], NULL, 8) = 0 <0.000007>
+[pid 72960] 12:52:02.041873 exit(0)     = ?
+[pid 72960] 12:52:02.041914 +++ exited with 0 +++
+[pid 72959] 12:52:02.041925 read(18, "", 4096) = 0 <0.000009>
+[pid 72959] 12:52:02.041953 close(18)   = 0 <0.000009>
+[pid 72959] 12:52:02.041981 openat(AT_FDCWD, "/home/lifelonglearner/.config/gtk-3.0/settings.ini", O_RDONLY) = 10 <0.000010>
+[pid 72959] 12:52:02.042010 fstat(10, {st_mode=S_IFREG|0664, st_size=497, ...}) = 0 <0.000006>
+[pid 72959] 12:52:02.042038 read(10, "[Settings]\ngtk-application-prefe"..., 4096) = 497 <0.000007>
+[pid 72959] 12:52:02.042066 read(10, "", 4096) = 0 <0.000009>
+[pid 72959] 12:52:02.042093 close(10)   = 0 <0.000007>
+[pid 72959] 12:52:02.042119 ioctl(1, TIOCGWINSZ, {ws_row=24, ws_col=80, ws_xpixel=0, ws_ypixel=0}) = 0 <0.000009>
+[pid 72959] 12:52:02.042150 fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0x2), ...}) = 0 <0.000006>
+[pid 72959] 12:52:02.042174 write(1, "\n", 1) = 1 <0.000017>
+[pid 72959] 12:52:02.042219 write(1, "\n", 1) = 1 <0.000014>
+[pid 72959] 12:52:02.042267 write(1, "\n", 1) = 1 <0.000013>
+[pid 72959] 12:52:02.042319 write(1, "\n", 1) = 1 <0.000009>
+[pid 72959] 12:52:02.042351 write(1, "\n", 1) = 1 <0.000011>
+[pid 72959] 12:52:02.042386 write(1, "\n", 1) = 1 <0.000009>
+[pid 72959] 12:52:02.042416 write(1, "\n", 1) = 1 <0.000015>
+[pid 72959] 12:52:02.042451 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042480 getdents64(13,  <unfinished ...>
+[pid 72959] 12:52:02.042501 <... write resumed>) = 1 <0.000042>
+[pid 72962] 12:52:02.042515 <... getdents64 resumed>0x5d8ebc50b730 /* 24 entries */, 32768) = 768 <0.000029>
+[pid 72959] 12:52:02.042526 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042535 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:1c.0/class", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.042547 <... write resumed>) = 1 <0.000013>
+[pid 72959] 12:52:02.042559 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042567 <... openat resumed>) = 10 <0.000023>
+[pid 72959] 12:52:02.042574 <... write resumed>) = 1 <0.000009>
+[pid 72962] 12:52:02.042580 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.042587 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042594 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000008>
+[pid 72959] 12:52:02.042603 <... write resumed>) = 1 <0.000010>
+[pid 72962] 12:52:02.042609 read(10,  <unfinished ...>
+[pid 72959] 12:52:02.042616 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042624 <... read resumed>"0x060400\n", 4096) = 9 <0.000008>
+[pid 72959] 12:52:02.042632 <... write resumed>) = 1 <0.000010>
+[pid 72962] 12:52:02.042637 close(10 <unfinished ...>
+[pid 72959] 12:52:02.042644 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042652 <... close resumed>) = 0 <0.000009>
+[pid 72959] 12:52:02.042658 <... write resumed>) = 1 <0.000008>
+[pid 72962] 12:52:02.042664 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:08.0/class", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.042673 write(1, "\n", 1) = 1 <0.000007>
+[pid 72962] 12:52:02.042690 <... openat resumed>) = 10 <0.000019>
+[pid 72959] 12:52:02.042698 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042706 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.042715 <... write resumed>) = 1 <0.000009>
+[pid 72959] 12:52:02.042727 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042737 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000024>
+[pid 72959] 12:52:02.042746 <... write resumed>) = 1 <0.000011>
+[pid 72962] 12:52:02.042753 read(10,  <unfinished ...>
+[pid 72959] 12:52:02.042760 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042769 <... read resumed>"0x088000\n", 4096) = 9 <0.000010>
+[pid 72959] 12:52:02.042778 <... write resumed>) = 1 <0.000011>
+[pid 72962] 12:52:02.042784 close(10 <unfinished ...>
+[pid 72959] 12:52:02.042791 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042801 <... close resumed>) = 0 <0.000011>
+[pid 72959] 12:52:02.042808 <... write resumed>) = 1 <0.000009>
+[pid 72962] 12:52:02.042815 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:0d.0/class", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.042824 write(1, "\n", 1) = 1 <0.000011>
+[pid 72962] 12:52:02.042845 <... openat resumed>) = 10 <0.000023>
+[pid 72959] 12:52:02.042852 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042861 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.042874 <... write resumed>) = 1 <0.000014>
+[pid 72962] 12:52:02.042880 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000009>
+[pid 72959] 12:52:02.042889 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042899 read(10,  <unfinished ...>
+[pid 72959] 12:52:02.042906 <... write resumed>) = 1 <0.000009>
+[pid 72962] 12:52:02.042913 <... read resumed>"0x0c0330\n", 4096) = 9 <0.000009>
+[pid 72959] 12:52:02.042922 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042932 close(10 <unfinished ...>
+[pid 72959] 12:52:02.042939 <... write resumed>) = 1 <0.000009>
+[pid 72962] 12:52:02.042946 <... close resumed>) = 0 <0.000009>
+[pid 72959] 12:52:02.042953 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042962 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:15.1/class", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.042972 <... write resumed>) = 1 <0.000010>
+[pid 72962] 12:52:02.042980 <... openat resumed>) = 10 <0.000010>
+[pid 72959] 12:52:02.042988 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.042996 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.043004 <... write resumed>) = 1 <0.000009>
+[pid 72962] 12:52:02.043011 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000009>
+[pid 72959] 12:52:02.043024 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.043033 read(10,  <unfinished ...>
+[pid 72959] 12:52:02.043040 <... write resumed>) = 1 <0.000009>
+[pid 72962] 12:52:02.043047 <... read resumed>"0x0c8000\n", 4096) = 9 <0.000009>
+[pid 72959] 12:52:02.043055 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.043064 close(10 <unfinished ...>
+[pid 72959] 12:52:02.043071 <... write resumed>) = 1 <0.000008>
+[pid 72962] 12:52:02.043078 <... close resumed>) = 0 <0.000009>
+[pid 72959] 12:52:02.043085 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.043093 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:1f.0/class", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.043102 <... write resumed>) = 1 <0.000010>
+[pid 72962] 12:52:02.043110 <... openat resumed>) = 10 <0.000009>
+[pid 72959] 12:52:02.043116 write(1, "\n", 1 <unfinished ...>
+[pid 72962] 12:52:02.043126 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.043136 <... write resumed>) = 1 <0.000011>
+[pid 72959] 12:52:02.043151 write(1, "\n", 1) = 1 <0.000008>
+[pid 72959] 12:52:02.043177 uname({sysname="Linux", nodename="ubuntu", ...}) = 0 <0.000005>
+[pid 72959] 12:52:02.043201 write(1, "\33[29A\33[38;5;202m            .-/+"..., 106 <unfinished ...>
+[pid 72962] 12:52:02.043211 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000078>
+[pid 72959] 12:52:02.043219 <... write resumed>) = 106 <0.000010>
+[pid 72962] 12:52:02.043226 read(10,  <unfinished ...>
+[pid 72959] 12:52:02.043235 write(1, "\33[38;5;202m        `:+ssssssssss"..., 135 <unfinished ...>
+[pid 72962] 12:52:02.043245 <... read resumed>"0x060100\n", 4096) = 9 <0.000013>
+[pid 72959] 12:52:02.043255 <... write resumed>) = 135 <0.000011>
+[pid 72962] 12:52:02.043262 close(10 <unfinished ...>
+[pid 72959] 12:52:02.043270 write(1, "\33[38;5;202m      -+sssssssssssss"..., 122 <unfinished ...>
+[pid 72962] 12:52:02.043292 <... close resumed>) = 0 <0.000022>
+[pid 72961] 12:52:02.043303 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.043321 <... write resumed>) = 122 <0.000030>
+[pid 72962] 12:52:02.043328 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:04.0/class", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.043339 openat(AT_FDCWD, "/sys/class/dmi/id/board_vendor", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.043353 <... openat resumed>) = 10 <0.000015>
+[pid 72961] 12:52:02.043360 <... read resumed>" cx8 apic sep mtrr pge mca cmov "..., 1024) = 1024 <0.000052>
+[pid 72959] 12:52:02.043412 <... openat resumed>) = 18 <0.000065>
+[pid 72962] 12:52:02.043427 fstat(10,  <unfinished ...>
+[pid 72961] 12:52:02.043436 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.043446 fstat(18,  <unfinished ...>
+[pid 72962] 12:52:02.043454 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000019>
+[pid 72959] 12:52:02.043473 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000021>
+[pid 72961] 12:52:02.043482 <... read resumed>" vnmi preemption_timer posted_in"..., 1024) = 1024 <0.000039>
+[pid 72959] 12:52:02.043492 read(18,  <unfinished ...>
+[pid 72962] 12:52:02.043500 read(10,  <unfinished ...>
+[pid 72959] 12:52:02.043508 <... read resumed>"HP\n", 4096) = 3 <0.000008>
+[pid 72961] 12:52:02.043519 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.043527 <... read resumed>"0x118000\n", 4096) = 9 <0.000020>
+[pid 72961] 12:52:02.043535 <... read resumed>"sc cpuid aperfmperf tsc_known_fr"..., 1024) = 1024 <0.000011>
+[pid 72962] 12:52:02.043545 close(10 <unfinished ...>
+[pid 72961] 12:52:02.043553 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.043560 <... close resumed>) = 0 <0.000008>
+[pid 72959] 12:52:02.043574 close(18)   = 0 <0.000008>
+[pid 72962] 12:52:02.043596 openat(AT_FDCWD, "/sys/bus/pci/devices/10000:e0:1d.0/class", O_RDONLY <unfinished ...>
+[pid 72961] 12:52:02.043607 <... read resumed>"ased_exec tsc_scaling\nbugs\t\t: sp"..., 1024) = 1024 <0.000048>
+[pid 72959] 12:52:02.043616 openat(AT_FDCWD, "/sys/class/dmi/id/product_name", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.043625 <... openat resumed>) = 10 <0.000019>
+[pid 72961] 12:52:02.043632 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.043644 <... openat resumed>) = 18 <0.000020>
+[pid 72962] 12:52:02.043652 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.043662 fstat(18,  <unfinished ...>
+[pid 72961] 12:52:02.043673 <... read resumed>"drand lahf_lm abm 3dnowprefetch "..., 1024) = 1024 <0.000030>
+[pid 72959] 12:52:02.043684 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000016>
+[pid 72962] 12:52:02.043693 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000036>
+[pid 72959] 12:52:02.043703 read(18,  <unfinished ...>
+[pid 72961] 12:52:02.043710 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.043718 <... read resumed>"HP Pavilion x360 Convertible 14-"..., 4096) = 39 <0.000008>
+[pid 72962] 12:52:02.043727 read(10,  <unfinished ...>
+[pid 72959] 12:52:02.043739 close(18 <unfinished ...>
+[pid 72962] 12:52:02.043746 <... read resumed>"0x060400\n", 4096) = 9 <0.000013>
+[pid 72961] 12:52:02.043755 <... read resumed>"address sizes\t: 39 bits physical"..., 1024) = 1024 <0.000039>
+[pid 72959] 12:52:02.043764 <... close resumed>) = 0 <0.000020>
+[pid 72962] 12:52:02.043770 close(10 <unfinished ...>
+[pid 72961] 12:52:02.043779 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.043788 write(1, "\33[38;5;202m    .osssssssssssssss"..., 151 <unfinished ...>
+[pid 72962] 12:52:02.043797 <... close resumed>) = 0 <0.000021>
+[pid 72959] 12:52:02.043806 <... write resumed>) = 151 <0.000010>
+[pid 72961] 12:52:02.043812 <... read resumed>"dt_a avx512f avx512dq rdseed adx"..., 1024) = 1024 <0.000029>
+[pid 72959] 12:52:02.043822 uname( <unfinished ...>
+[pid 72962] 12:52:02.043829 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:16.0/class", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.043840 <... uname resumed>{sysname="Linux", nodename="ubuntu", ...}) = 0 <0.000011>
+[pid 72961] 12:52:02.043851 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.043859 write(1, "\33[38;5;202m   /sssssssssss\33[1;37"..., 145 <unfinished ...>
+[pid 72962] 12:52:02.043867 <... openat resumed>) = 10 <0.000029>
+[pid 72959] 12:52:02.043874 <... write resumed>) = 145 <0.000009>
+[pid 72961] 12:52:02.043882 <... read resumed>"0GHz\nstepping\t: 2\nmicrocode\t: 0x"..., 1024) = 1024 <0.000027>
+[pid 72959] 12:52:02.043893 sysinfo( <unfinished ...>
+[pid 72962] 12:52:02.043899 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.043909 <... sysinfo resumed>{uptime=5357, loads=[109504, 112096, 107584], totalram=16526307328, freeram=1687076864, sharedram=1287659520, bufferram=745390080, totalswap=4294963200, freeswap=4294963200, procs=1438, totalhigh=0, freehigh=0, mem_unit=1}) = 0 <0.000009>
+[pid 72961] 12:52:02.043921 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.043932 write(1, "\33[38;5;202m  +sssssssss\33[1;37mhm"..., 157 <unfinished ...>
+[pid 72962] 12:52:02.043942 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000036>
+[pid 72959] 12:52:02.043960 <... write resumed>) = 157 <0.000022>
+[pid 72959] 12:52:02.043977 write(1, "\33[38;5;202m /ssssssss\33[1;37mhNMM"..., 169 <unfinished ...>
+[pid 72962] 12:52:02.043986 read(10,  <unfinished ...>
+[pid 72961] 12:52:02.043992 <... read resumed>" hwp hwp_notify hwp_act_window h"..., 1024) = 1024 <0.000065>
+[pid 72959] 12:52:02.044002 <... write resumed>) = 169 <0.000018>
+[pid 72962] 12:52:02.044008 <... read resumed>"0x078000\n", 4096) = 9 <0.000017>
+[pid 72959] 12:52:02.044020 write(1, "\33[38;5;202m.ssssssss\33[1;37mdMMMN"..., 171 <unfinished ...>
+[pid 72961] 12:52:02.044031 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.044044 <... write resumed>) = 171 <0.000015>
+[pid 72961] 12:52:02.044052 <... read resumed>"es\ncpuid level\t: 27\nwp\t\t: yes\nfl"..., 1024) = 1024 <0.000016>
+[pid 72959] 12:52:02.044061 write(1, "\33[38;5;202m+ssss\33[1;37mhhhyNMMNy"..., 144 <unfinished ...>
+[pid 72961] 12:52:02.044070 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.044077 <... write resumed>) = 144 <0.000008>
+[pid 72961] 12:52:02.044084 <... read resumed>"512_vp2intersect md_clear ibt fl"..., 1024) = 520 <0.000009>
+[pid 72959] 12:52:02.044093 write(1, "\33[38;5;202moss\33[1;37myNMMMNyMMh\33"..., 144 <unfinished ...>
+[pid 72961] 12:52:02.044106 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.044116 close(10 <unfinished ...>
+[pid 72959] 12:52:02.044125 <... write resumed>) = 144 <0.000020>
+[pid 72961] 12:52:02.044131 <... read resumed>"", 1024) = 0 <0.000019>
+[pid 72959] 12:52:02.044139 write(1, "\33[38;5;202moss\33[1;37myNMMMNyMMh\33"..., 143 <unfinished ...>
+[pid 72962] 12:52:02.044147 <... close resumed>) = 0 <0.000024>
+[pid 72959] 12:52:02.044155 <... write resumed>) = 143 <0.000009>
+[pid 72961] 12:52:02.044161 close(11 <unfinished ...>
+[pid 72959] 12:52:02.044169 write(1, "\33[38;5;202m+ssss\33[1;37mhhhyNMMNy"..., 150 <unfinished ...>
+[pid 72962] 12:52:02.044177 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:01:00.0/class", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.044188 <... write resumed>) = 150 <0.000010>
+[pid 72961] 12:52:02.044195 <... close resumed>) = 0 <0.000029>
+[pid 72962] 12:52:02.044204 <... openat resumed>) = 10 <0.000019>
+[pid 72959] 12:52:02.044212 write(1, "\33[38;5;202m.ssssssss\33[1;37mdMMMN"..., 148 <unfinished ...>
+[pid 72962] 12:52:02.044221 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.044230 <... write resumed>) = 148 <0.000009>
+[pid 72961] 12:52:02.044236 openat(AT_FDCWD, "/sys/devices/system/cpu/cpufreq/policy0/cpuinfo_max_freq", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.044249 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000020>
+[pid 72961] 12:52:02.044259 <... openat resumed>) = 11 <0.000013>
+[pid 72962] 12:52:02.044267 read(10,  <unfinished ...>
+[pid 72961] 12:52:02.044282 fstat(11,  <unfinished ...>
+[pid 72962] 12:52:02.044290 <... read resumed>"0x028000\n", 4096) = 9 <0.000016>
+[pid 72961] 12:52:02.044299 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000012>
+[pid 72962] 12:52:02.044308 close(10 <unfinished ...>
+[pid 72961] 12:52:02.044315 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.044322 <... close resumed>) = 0 <0.000008>
+[pid 72961] 12:52:02.044329 <... read resumed>"4500000\n", 4096) = 8 <0.000009>
+[pid 72962] 12:52:02.044337 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:1f.5/class", O_RDONLY <unfinished ...>
+[pid 72961] 12:52:02.044348 close(11)   = 0 <0.000011>
+[pid 72962] 12:52:02.044373 <... openat resumed>) = 10 <0.000029>
+[pid 72961] 12:52:02.044387 openat(AT_FDCWD, "/sys/devices/system/cpu/cpufreq/policy1/cpuinfo_max_freq", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.044406 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.044416 write(1, "\33[38;5;202m /ssssssss\33[1;37mhNMM"..., 163 <unfinished ...>
+[pid 72961] 12:52:02.044427 <... openat resumed>) = 11 <0.000023>
+[pid 72959] 12:52:02.044434 <... write resumed>) = 163 <0.000010>
+[pid 72962] 12:52:02.044441 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000029>
+[pid 72959] 12:52:02.044451 write(1, "\33[38;5;202m  +sssssssss\33[1;37mdm"..., 150 <unfinished ...>
+[pid 72961] 12:52:02.044458 fstat(11,  <unfinished ...>
+[pid 72962] 12:52:02.044465 read(10,  <unfinished ...>
+[pid 72959] 12:52:02.044472 <... write resumed>) = 150 <0.000013>
+[pid 72961] 12:52:02.044480 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000017>
+[pid 72959] 12:52:02.044489 write(1, "\33[38;5;202m   /sssssssssss\33[1;37"..., 153 <unfinished ...>
+[pid 72962] 12:52:02.044498 <... read resumed>"0x0c8000\n", 4096) = 9 <0.000027>
+[pid 72959] 12:52:02.044506 <... write resumed>) = 153 <0.000010>
+[pid 72961] 12:52:02.044512 read(11,  <unfinished ...>
+[pid 72959] 12:52:02.044519 futex(0x7ce1c4244990, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 72961, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+[pid 72962] 12:52:02.044534 close(10 <unfinished ...>
+[pid 72961] 12:52:02.044542 <... read resumed>"4500000\n", 4096) = 8 <0.000023>
+[pid 72962] 12:52:02.044551 <... close resumed>) = 0 <0.000012>
+[pid 72961] 12:52:02.044558 close(11 <unfinished ...>
+[pid 72962] 12:52:02.044566 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:1f.3/class", O_RDONLY <unfinished ...>
+[pid 72961] 12:52:02.044575 <... close resumed>) = 0 <0.000011>
+[pid 72962] 12:52:02.044590 <... openat resumed>) = 10 <0.000017>
+[pid 72961] 12:52:02.044604 openat(AT_FDCWD, "/sys/devices/system/cpu/cpufreq/policy2/cpuinfo_max_freq", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.044616 fstat(10,  <unfinished ...>
+[pid 72961] 12:52:02.044625 <... openat resumed>) = 11 <0.000012>
+[pid 72962] 12:52:02.044631 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000009>
+[pid 72961] 12:52:02.044638 fstat(11,  <unfinished ...>
+[pid 72962] 12:52:02.044643 read(10,  <unfinished ...>
+[pid 72961] 12:52:02.044648 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000005>
+[pid 72962] 12:52:02.044653 <... read resumed>"0x040100\n", 4096) = 9 <0.000007>
+[pid 72961] 12:52:02.044659 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.044665 close(10 <unfinished ...>
+[pid 72961] 12:52:02.044670 <... read resumed>"4500000\n", 4096) = 8 <0.000006>
+[pid 72962] 12:52:02.044675 <... close resumed>) = 0 <0.000007>
+[pid 72961] 12:52:02.044683 close(11 <unfinished ...>
+[pid 72962] 12:52:02.044691 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:00.0/class", O_RDONLY <unfinished ...>
+[pid 72961] 12:52:02.044701 <... close resumed>) = 0 <0.000010>
+[pid 72962] 12:52:02.044709 <... openat resumed>) = 10 <0.000010>
+[pid 72961] 12:52:02.044716 openat(AT_FDCWD, "/sys/devices/system/cpu/cpufreq/policy3/cpuinfo_max_freq", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.044726 fstat(10,  <unfinished ...>
+[pid 72961] 12:52:02.044734 <... openat resumed>) = 11 <0.000009>
+[pid 72962] 12:52:02.044741 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000009>
+[pid 72961] 12:52:02.044751 fstat(11,  <unfinished ...>
+[pid 72962] 12:52:02.044759 read(10,  <unfinished ...>
+[pid 72961] 12:52:02.044766 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000009>
+[pid 72962] 12:52:02.044775 <... read resumed>"0x060000\n", 4096) = 9 <0.000011>
+[pid 72961] 12:52:02.044784 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.044792 close(10 <unfinished ...>
+[pid 72961] 12:52:02.044800 <... read resumed>"4500000\n", 4096) = 8 <0.000009>
+[pid 72962] 12:52:02.044808 <... close resumed>) = 0 <0.000010>
+[pid 72961] 12:52:02.044815 close(11 <unfinished ...>
+[pid 72962] 12:52:02.044823 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:12.0/class", O_RDONLY <unfinished ...>
+[pid 72961] 12:52:02.044838 <... close resumed>) = 0 <0.000010>
+[pid 72962] 12:52:02.044846 <... openat resumed>) = 10 <0.000016>
+[pid 72961] 12:52:02.044854 openat(AT_FDCWD, "/sys/devices/system/cpu/cpufreq/policy4/cpuinfo_max_freq", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.044864 fstat(10,  <unfinished ...>
+[pid 72961] 12:52:02.044873 <... openat resumed>) = 11 <0.000010>
+[pid 72962] 12:52:02.044880 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000011>
+[pid 72961] 12:52:02.044889 fstat(11,  <unfinished ...>
+[pid 72962] 12:52:02.044897 read(10,  <unfinished ...>
+[pid 72961] 12:52:02.044905 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000009>
+[pid 72962] 12:52:02.044915 <... read resumed>"0x070000\n", 4096) = 9 <0.000012>
+[pid 72961] 12:52:02.044923 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.044932 close(10 <unfinished ...>
+[pid 72961] 12:52:02.044940 <... read resumed>"4500000\n", 4096) = 8 <0.000009>
+[pid 72962] 12:52:02.044948 <... close resumed>) = 0 <0.000011>
+[pid 72961] 12:52:02.044955 close(11 <unfinished ...>
+[pid 72962] 12:52:02.044964 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:15.0/class", O_RDONLY <unfinished ...>
+[pid 72961] 12:52:02.044974 <... close resumed>) = 0 <0.000011>
+[pid 72962] 12:52:02.044982 <... openat resumed>) = 10 <0.000010>
+[pid 72961] 12:52:02.044989 openat(AT_FDCWD, "/sys/devices/system/cpu/cpufreq/policy5/cpuinfo_max_freq", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.045001 fstat(10,  <unfinished ...>
+[pid 72961] 12:52:02.045010 <... openat resumed>) = 11 <0.000011>
+[pid 72962] 12:52:02.045017 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000010>
+[pid 72961] 12:52:02.045027 fstat(11,  <unfinished ...>
+[pid 72962] 12:52:02.045041 read(10,  <unfinished ...>
+[pid 72961] 12:52:02.045049 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000015>
+[pid 72962] 12:52:02.045059 <... read resumed>"0x0c8000\n", 4096) = 9 <0.000012>
+[pid 72961] 12:52:02.045068 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.045076 close(10 <unfinished ...>
+[pid 72961] 12:52:02.045084 <... read resumed>"4500000\n", 4096) = 8 <0.000009>
+[pid 72962] 12:52:02.045092 <... close resumed>) = 0 <0.000011>
+[pid 72961] 12:52:02.045099 close(11 <unfinished ...>
+[pid 72962] 12:52:02.045107 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:1d.0/class", O_RDONLY <unfinished ...>
+[pid 72961] 12:52:02.045117 <... close resumed>) = 0 <0.000011>
+[pid 72962] 12:52:02.045124 <... openat resumed>) = 10 <0.000010>
+[pid 72961] 12:52:02.045131 openat(AT_FDCWD, "/sys/devices/system/cpu/cpufreq/policy6/cpuinfo_max_freq", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.045140 fstat(10,  <unfinished ...>
+[pid 72961] 12:52:02.045149 <... openat resumed>) = 11 <0.000009>
+[pid 72962] 12:52:02.045156 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000010>
+[pid 72961] 12:52:02.045165 fstat(11,  <unfinished ...>
+[pid 72962] 12:52:02.045171 read(10,  <unfinished ...>
+[pid 72961] 12:52:02.045176 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000006>
+[pid 72962] 12:52:02.045184 <... read resumed>"0x088000\n", 4096) = 9 <0.000009>
+[pid 72961] 12:52:02.045190 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.045195 close(10 <unfinished ...>
+[pid 72961] 12:52:02.045201 <... read resumed>"4500000\n", 4096) = 8 <0.000007>
+[pid 72962] 12:52:02.045207 <... close resumed>) = 0 <0.000008>
+[pid 72961] 12:52:02.045214 close(11 <unfinished ...>
+[pid 72962] 12:52:02.045223 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:0e.0/class", O_RDONLY <unfinished ...>
+[pid 72961] 12:52:02.045233 <... close resumed>) = 0 <0.000011>
+[pid 72962] 12:52:02.045249 <... openat resumed>) = 10 <0.000018>
+[pid 72961] 12:52:02.045257 openat(AT_FDCWD, "/sys/devices/system/cpu/cpufreq/policy7/cpuinfo_max_freq", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.045271 fstat(10,  <unfinished ...>
+[pid 72961] 12:52:02.045288 <... openat resumed>) = 11 <0.000021>
+[pid 72962] 12:52:02.045296 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000011>
+[pid 72961] 12:52:02.045307 fstat(11,  <unfinished ...>
+[pid 72962] 12:52:02.045316 read(10,  <unfinished ...>
+[pid 72961] 12:52:02.045324 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000009>
+[pid 72962] 12:52:02.045334 <... read resumed>"0x010400\n", 4096) = 9 <0.000013>
+[pid 72961] 12:52:02.045344 read(11,  <unfinished ...>
+[pid 72962] 12:52:02.045350 close(10 <unfinished ...>
+[pid 72961] 12:52:02.045355 <... read resumed>"4500000\n", 4096) = 8 <0.000007>
+[pid 72962] 12:52:02.045361 <... close resumed>) = 0 <0.000007>
+[pid 72961] 12:52:02.045366 close(11 <unfinished ...>
+[pid 72962] 12:52:02.045371 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:14.2/class", O_RDONLY <unfinished ...>
+[pid 72961] 12:52:02.045378 <... close resumed>) = 0 <0.000007>
+[pid 72962] 12:52:02.045388 <... openat resumed>) = 10 <0.000012>
+[pid 72961] 12:52:02.045396 rt_sigprocmask(SIG_BLOCK, ~[RT_1],  <unfinished ...>
+[pid 72962] 12:52:02.045410 fstat(10,  <unfinished ...>
+[pid 72961] 12:52:02.045421 <... rt_sigprocmask resumed>NULL, 8) = 0 <0.000014>
+[pid 72962] 12:52:02.045429 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000010>
+[pid 72961] 12:52:02.045435 exit(0 <unfinished ...>
+[pid 72962] 12:52:02.045441 read(10,  <unfinished ...>
+[pid 72961] 12:52:02.045445 <... exit resumed>) = ?
+[pid 72962] 12:52:02.045451 <... read resumed>"0x050000\n", 4096) = 9 <0.000006>
+[pid 72962] 12:52:02.045478 close(10 <unfinished ...>
+[pid 72961] 12:52:02.045487 +++ exited with 0 +++
+[pid 72959] 12:52:02.045494 <... futex resumed>) = 0 <0.000962>
+[pid 72962] 12:52:02.045501 <... close resumed>) = 0 <0.000016>
+[pid 72959] 12:52:02.045509 write(1, "\33[38;5;202m    .osssssssssssssss"..., 147 <unfinished ...>
+[pid 72962] 12:52:02.045524 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:02.0/class", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.045535 <... write resumed>) = 147 <0.000017>
+[pid 72962] 12:52:02.045548 <... openat resumed>) = 10 <0.000016>
+[pid 72959] 12:52:02.045557 openat(AT_FDCWD, "/sys/class/hwmon", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY <unfinished ...>
+[pid 72962] 12:52:02.045568 fstat(10,  <unfinished ...>
+[pid 72959] 12:52:02.045583 <... openat resumed>) = 11 <0.000015>
+[pid 72962] 12:52:02.045590 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000016>
+[pid 72959] 12:52:02.045602 fstat(11,  <unfinished ...>
+[pid 72962] 12:52:02.045610 read(10,  <unfinished ...>
+[pid 72959] 12:52:02.045616 <... fstat resumed>{st_mode=S_IFDIR|0755, st_size=0, ...}) = 0 <0.000007>
+[pid 72962] 12:52:02.045623 <... read resumed>"0x030000\n", 4096) = 9 <0.000009>
+[pid 72959] 12:52:02.045636 getdents64(11,  <unfinished ...>
+[pid 72962] 12:52:02.045641 close(10 <unfinished ...>
+[pid 72959] 12:52:02.045653 <... getdents64 resumed>0x5d8ebc514960 /* 9 entries */, 32768) = 272 <0.000011>
+[pid 72962] 12:52:02.045662 <... close resumed>) = 0 <0.000018>
+[pid 72959] 12:52:02.045670 openat(AT_FDCWD, "/sys/class/hwmon/hwmon6/name", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.045679 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:02.0/vendor", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.045697 <... openat resumed>) = 10 <0.000018>
+[pid 72962] 12:52:02.045705 <... openat resumed>) = 18 <0.000019>
+[pid 72959] 12:52:02.045712 fstat(10,  <unfinished ...>
+[pid 72962] 12:52:02.045721 fstat(18,  <unfinished ...>
+[pid 72959] 12:52:02.045729 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000009>
+[pid 72962] 12:52:02.045739 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000013>
+[pid 72959] 12:52:02.045748 read(10,  <unfinished ...>
+[pid 72962] 12:52:02.045757 read(18,  <unfinished ...>
+[pid 72959] 12:52:02.045766 <... read resumed>"mt7921_phy0\n", 4096) = 12 <0.000010>
+[pid 72962] 12:52:02.045773 <... read resumed>"0x8086\n", 4096) = 7 <0.000010>
+[pid 72959] 12:52:02.045782 close(10 <unfinished ...>
+[pid 72962] 12:52:02.045789 close(18 <unfinished ...>
+[pid 72959] 12:52:02.045796 <... close resumed>) = 0 <0.000009>
+[pid 72962] 12:52:02.045801 <... close resumed>) = 0 <0.000006>
+[pid 72959] 12:52:02.045807 openat(AT_FDCWD, "/sys/class/hwmon/hwmon4/name", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.045814 openat(AT_FDCWD, "/sys/bus/pci/devices/0000:00:02.0/device", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.045832 <... openat resumed>) = 10 <0.000018>
+[pid 72962] 12:52:02.045838 <... openat resumed>) = 18 <0.000017>
+[pid 72959] 12:52:02.045847 fstat(10,  <unfinished ...>
+[pid 72962] 12:52:02.045856 fstat(18,  <unfinished ...>
+[pid 72959] 12:52:02.045863 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000008>
+[pid 72962] 12:52:02.045875 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000013>
+[pid 72959] 12:52:02.045883 read(10,  <unfinished ...>
+[pid 72962] 12:52:02.045892 read(18,  <unfinished ...>
+[pid 72959] 12:52:02.045899 <... read resumed>"coretemp\n", 4096) = 9 <0.000009>
+[pid 72962] 12:52:02.045906 <... read resumed>"0x9a49\n", 4096) = 7 <0.000009>
+[pid 72959] 12:52:02.045914 close(10 <unfinished ...>
+[pid 72962] 12:52:02.045922 close(18 <unfinished ...>
+[pid 72959] 12:52:02.045929 <... close resumed>) = 0 <0.000009>
+[pid 72962] 12:52:02.045935 <... close resumed>) = 0 <0.000008>
+[pid 72959] 12:52:02.045942 openat(AT_FDCWD, "/sys/class/hwmon/hwmon4/temp1_input", O_RDONLY <unfinished ...>
+[pid 72962] 12:52:02.045949 close(13 <unfinished ...>
+[pid 72959] 12:52:02.045961 <... openat resumed>) = 10 <0.000013>
+[pid 72962] 12:52:02.045966 <... close resumed>) = 0 <0.000011>
+[pid 72959] 12:52:02.045972 fstat(10,  <unfinished ...>
+[pid 72962] 12:52:02.045979 openat(AT_FDCWD, "/usr/share/hwdata/pci.ids", O_RDONLY <unfinished ...>
+[pid 72959] 12:52:02.045990 <... fstat resumed>{st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000011>
+[pid 72959] 12:52:02.046001 read(10, "80000\n", 4096) = 6 <0.000014>
+[pid 72959] 12:52:02.046034 close(10 <unfinished ...>
+[pid 72962] 12:52:02.046039 <... openat resumed>) = 13 <0.000053>
+[pid 72959] 12:52:02.046047 <... close resumed>) = 0 <0.000008>
+[pid 72962] 12:52:02.046053 fstat(13,  <unfinished ...>
+[pid 72959] 12:52:02.046058 close(11 <unfinished ...>
+[pid 72962] 12:52:02.046063 <... fstat resumed>{st_mode=S_IFREG|0644, st_size=1444100, ...}) = 0 <0.000006>
+[pid 72959] 12:52:02.046069 <... close resumed>) = 0 <0.000008>
+[pid 72962] 12:52:02.046073 mmap(NULL, 1444100, PROT_READ, MAP_PRIVATE, 13, 0 <unfinished ...>
+[pid 72959] 12:52:02.046081 write(1, "\33[38;5;202m      -+sssssssssssss"..., 142 <unfinished ...>
+[pid 72962] 12:52:02.046093 <... mmap resumed>) = 0x7ce1c3e9f000 <0.000014>
+[pid 72959] 12:52:02.046102 <... write resumed>) = 142 <0.000011>
+[pid 72959] 12:52:02.046195 openat(AT_FDCWD, "/proc/loadavg", O_RDONLY) = 10 <0.000012>
+[pid 72959] 12:52:02.046235 fstat(10, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0 <0.000010>
+[pid 72959] 12:52:02.046310 read(10, "1.67 1.71 1.64 8/1437 72962\n", 1024) = 28 <0.000011>
+[pid 72959] 12:52:02.046349 close(10)   = 0 <0.000009>
+[pid 72959] 12:52:02.046372 write(1, "\33[38;5;202m        `:+ssssssssss"..., 120) = 120 <0.000011>
+[pid 72959] 12:52:02.046401 futex(0x7ce1c423f990, FUTEX_WAIT_BITSET|FUTEX_CLOCK_REALTIME, 72962, NULL, FUTEX_BITSET_MATCH_ANY <unfinished ...>
+[pid 72962] 12:52:02.046631 munmap(0x7ce1c3e9f000, 1444100) = 0 <0.000031>
+[pid 72962] 12:52:02.046678 close(13)   = 0 <0.000006>
+[pid 72962] 12:52:02.046697 rt_sigprocmask(SIG_BLOCK, ~[RT_1], NULL, 8) = 0 <0.000006>
+[pid 72962] 12:52:02.046722 exit(0)     = ?
+[pid 72959] 12:52:02.046750 <... futex resumed>) = 0 <0.000339>
+[pid 72962] 12:52:02.046759 +++ exited with 0 +++
+12:52:02.046764 write(1, "\33[38;5;202m            .-/+oosss"..., 133) = 133 <0.000015>
+12:52:02.046804 openat(AT_FDCWD, "/sys/class/drm", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 10 <0.000015>
+12:52:02.046849 fstat(10, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0 <0.000006>
+12:52:02.046880 getdents64(10, 0x5d8ebc50b030 /* 7 entries */, 32768) = 216 <0.000010>
+12:52:02.046908 openat(AT_FDCWD, "/sys/class/drm/card1-HDMI-A-1/status", O_RDONLY) = 11 <0.000015>
+12:52:02.046941 fstat(11, {st_mode=S_IFREG|0644, st_size=4096, ...}) = 0 <0.000036>
+12:52:02.046994 read(11, "connected\n", 4096) = 10 <0.000009>
+12:52:02.047019 close(11)               = 0 <0.000007>
+12:52:02.047041 openat(AT_FDCWD, "/sys/class/drm/card1-HDMI-A-1/modes", O_RDONLY) = 11 <0.000009>
+12:52:02.047065 fstat(11, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000006>
+12:52:02.047085 read(11, "1360x768\n1920x1080\n1920x1080\n192"..., 4096) = 288 <0.000012>
+12:52:02.047113 close(11)               = 0 <0.000005>
+12:52:02.047130 openat(AT_FDCWD, "/sys/class/drm/card1-DP-1/status", O_RDONLY) = 11 <0.000009>
+12:52:02.047155 fstat(11, {st_mode=S_IFREG|0644, st_size=4096, ...}) = 0 <0.000005>
+12:52:02.047175 read(11, "disconnected\n", 4096) = 13 <0.000006>
+12:52:02.047196 close(11)               = 0 <0.000005>
+12:52:02.047215 getdents64(10, 0x5d8ebc50b030 /* 0 entries */, 32768) = 0 <0.000005>
+12:52:02.047232 close(10)               = 0 <0.000010>
+12:52:02.047258 write(1, "                                "..., 101) = 101 <0.000013>
+12:52:02.047299 write(1, "                                "..., 114) = 114 <0.000009>
+12:52:02.047337 write(1, "                                "..., 153) = 153 <0.000008>
+12:52:02.047364 openat(AT_FDCWD, "/proc/mounts", O_RDONLY) = 10 <0.000028>
+12:52:02.047419 fstat(10, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0 <0.000006>
+12:52:02.047455 read(10, "sysfs /sys sysfs rw,nosuid,nodev"..., 1024) = 1024 <0.000038>
+12:52:02.047526 statfs("/", {f_type=EXT2_SUPER_MAGIC, f_bsize=4096, f_blocks=122512118, f_bfree=62284254, f_bavail=56042603, f_files=31195136, f_ffree=28933407, f_fsid={val=[0x94b44f5b, 0x33d9c23b]}, f_namelen=255, f_frsize=4096, f_flags=ST_VALID|ST_RELATIME}) = 0 <0.000014>
+12:52:02.047577 read(10, "ct,pipe_ino=3895 0 0\nhugetlbfs /"..., 1024) = 1024 <0.000031>
+12:52:02.047644 read(10, "/core18/2999 squashfs ro,nodev,r"..., 1024) = 1024 <0.000026>
+12:52:02.047697 read(10, "0\n/dev/loop17 /snap/gnome-3-38-2"..., 1024) = 1024 <0.000021>
+12:52:02.047742 read(10, "atime,errors=continue,threads=si"..., 1024) = 1024 <0.000022>
+12:52:02.047786 read(10, "/boot/efi vfat rw,relatime,fmask"..., 1024) = 867 <0.000023>
+12:52:02.047827 statfs("/boot/efi", {f_type=MSDOS_SUPER_MAGIC, f_bsize=4096, f_blocks=274658, f_bfree=273086, f_bavail=273086, f_files=0, f_ffree=0, f_fsid={val=[0x10301, 0]}, f_namelen=1530, f_frsize=4096, f_flags=ST_VALID|ST_RELATIME}) = 0 <0.000012>
+12:52:02.047883 read(10, "", 1024)      = 0 <0.000007>
+12:52:02.047912 close(10)               = 0 <0.000013>
+12:52:02.047944 write(1, "                                "..., 129) = 129 <0.000011>
+12:52:02.047981 socket(AF_NETLINK, SOCK_RAW|SOCK_CLOEXEC, NETLINK_ROUTE) = 10 <0.000017>
+12:52:02.048020 bind(10, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 0 <0.000008>
+12:52:02.048046 getsockname(10, {sa_family=AF_NETLINK, nl_pid=72959, nl_groups=00000000}, [12]) = 0 <0.000011>
+12:52:02.048096 sendto(10, [{nlmsg_len=20, nlmsg_type=RTM_GETLINK, nlmsg_flags=NLM_F_REQUEST|NLM_F_DUMP, nlmsg_seq=1780989722, nlmsg_pid=0}, {ifi_family=AF_UNSPEC, ...}], 20, 0, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 20 <0.000055>
+12:52:02.054215 recvmsg(10, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[[{nlmsg_len=1472, nlmsg_type=RTM_NEWLINK, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989722, nlmsg_pid=72959}, {ifi_family=AF_UNSPEC, ifi_type=ARPHRD_LOOPBACK, ifi_index=if_nametoindex("lo"), ifi_flags=IFF_UP|IFF_LOOPBACK|IFF_RUNNING|IFF_LOWER_UP, ifi_change=0}, [[{nla_len=7, nla_type=IFLA_IFNAME}, "lo"], [{nla_len=8, nla_type=IFLA_TXQLEN}, 1000], [{nla_len=5, nla_type=IFLA_OPERSTATE}, 0], [{nla_len=5, nla_type=IFLA_LINKMODE}, 0], [{nla_len=5, nla_type=0x43 /* IFLA_??? */}, "\x01"], [{nla_len=8, nla_type=IFLA_MTU}, 65536], [{nla_len=8, nla_type=IFLA_MIN_MTU}, 0], [{nla_len=8, nla_type=IFLA_MAX_MTU}, 0], [{nla_len=8, nla_type=IFLA_GROUP}, 0], [{nla_len=8, nla_type=IFLA_PROMISCUITY}, 0], [{nla_len=8, nla_type=IFLA_ALLMULTI}, 0], [{nla_len=8, nla_type=IFLA_NUM_TX_QUEUES}, 1], [{nla_len=8, nla_type=IFLA_GSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_GSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GSO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SIZE}, 524280], [{nla_len=8, nla_type=IFLA_TSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=0x42 /* IFLA_??? */}, "\x00\x00\x00\x00"], [{nla_len=8, nla_type=IFLA_NUM_RX_QUEUES}, 1], [{nla_len=5, nla_type=IFLA_CARRIER}, 1], [{nla_len=8, nla_type=IFLA_CARRIER_CHANGES}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_UP_COUNT}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_DOWN_COUNT}, 0], [{nla_len=5, nla_type=IFLA_PROTO_DOWN}, 0], [{nla_len=10, nla_type=IFLA_ADDRESS}, 00:00:00:00:00:00], [{nla_len=10, nla_type=IFLA_BROADCAST}, 00:00:00:00:00:00], [{nla_len=204, nla_type=IFLA_STATS64}, {rx_packets=34680, tx_packets=34680, rx_bytes=63067283, tx_bytes=63067283, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0, rx_otherhost_dropped=0}], [{nla_len=100, nla_type=IFLA_STATS}, {rx_packets=34680, tx_packets=34680, rx_bytes=63067283, tx_bytes=63067283, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=0, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0}], [{nla_len=12, nla_type=IFLA_XDP}, [{nla_len=5, nla_type=IFLA_XDP_ATTACHED}, XDP_ATTACHED_NONE]], [{nla_len=12, nla_type=IFLA_QDISC}, "noqueue"], ...]], [{nlmsg_len=1512, nlmsg_type=RTM_NEWLINK, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989722, nlmsg_pid=72959}, {ifi_family=AF_UNSPEC, ifi_type=ARPHRD_ETHER, ifi_index=if_nametoindex("wlo1"), ifi_flags=IFF_UP|IFF_BROADCAST|IFF_RUNNING|IFF_MULTICAST|IFF_LOWER_UP, ifi_change=0}, [[{nla_len=9, nla_type=IFLA_IFNAME}, "wlo1"], [{nla_len=8, nla_type=IFLA_TXQLEN}, 1000], [{nla_len=5, nla_type=IFLA_OPERSTATE}, 6], [{nla_len=5, nla_type=IFLA_LINKMODE}, 1], [{nla_len=5, nla_type=0x43 /* IFLA_??? */}, "\x01"], [{nla_len=8, nla_type=IFLA_MTU}, 1500], [{nla_len=8, nla_type=IFLA_MIN_MTU}, 256], [{nla_len=8, nla_type=IFLA_MAX_MTU}, 2304], [{nla_len=8, nla_type=IFLA_GROUP}, 0], [{nla_len=8, nla_type=IFLA_PROMISCUITY}, 0], [{nla_len=8, nla_type=IFLA_ALLMULTI}, 0], [{nla_len=8, nla_type=IFLA_NUM_TX_QUEUES}, 1], [{nla_len=8, nla_type=IFLA_GSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_GSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GSO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=0x42 /* IFLA_??? */}, "\x00\x00\x00\x00"], [{nla_len=8, nla_type=IFLA_NUM_RX_QUEUES}, 1], [{nla_len=5, nla_type=IFLA_CARRIER}, 1], [{nla_len=8, nla_type=IFLA_CARRIER_CHANGES}, 8], [{nla_len=8, nla_type=IFLA_CARRIER_UP_COUNT}, 4], [{nla_len=8, nla_type=IFLA_CARRIER_DOWN_COUNT}, 4], [{nla_len=5, nla_type=IFLA_PROTO_DOWN}, 0], [{nla_len=10, nla_type=IFLA_ADDRESS}, 90:e8:68:e7:2d:7b], [{nla_len=10, nla_type=IFLA_BROADCAST}, ff:ff:ff:ff:ff:ff], [{nla_len=204, nla_type=IFLA_STATS64}, {rx_packets=324053, tx_packets=191302, rx_bytes=316853667, tx_bytes=142182779, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=50, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0, rx_otherhost_dropped=0}], [{nla_len=100, nla_type=IFLA_STATS}, {rx_packets=324053, tx_packets=191302, rx_bytes=316853667, tx_bytes=142182779, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=50, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0}], [{nla_len=12, nla_type=IFLA_XDP}, [{nla_len=5, nla_type=IFLA_XDP_ATTACHED}, XDP_ATTACHED_NONE]], [{nla_len=10, nla_type=IFLA_PERM_ADDRESS}, 90:e8:68:e7:2d:7b], ...]]], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 2984 <0.000019>
+12:52:02.054409 recvmsg(10, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[{nlmsg_len=1900, nlmsg_type=RTM_NEWLINK, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989722, nlmsg_pid=72959}, {ifi_family=AF_UNSPEC, ifi_type=ARPHRD_ETHER, ifi_index=if_nametoindex("docker0"), ifi_flags=IFF_UP|IFF_BROADCAST|IFF_MULTICAST, ifi_change=0}, [[{nla_len=12, nla_type=IFLA_IFNAME}, "docker0"], [{nla_len=8, nla_type=IFLA_TXQLEN}, 0], [{nla_len=5, nla_type=IFLA_OPERSTATE}, 2], [{nla_len=5, nla_type=IFLA_LINKMODE}, 0], [{nla_len=5, nla_type=0x43 /* IFLA_??? */}, "\x01"], [{nla_len=8, nla_type=IFLA_MTU}, 1500], [{nla_len=8, nla_type=IFLA_MIN_MTU}, 68], [{nla_len=8, nla_type=IFLA_MAX_MTU}, 65535], [{nla_len=8, nla_type=IFLA_GROUP}, 0], [{nla_len=8, nla_type=IFLA_PROMISCUITY}, 0], [{nla_len=8, nla_type=IFLA_ALLMULTI}, 0], [{nla_len=8, nla_type=IFLA_NUM_TX_QUEUES}, 1], [{nla_len=8, nla_type=IFLA_GSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=IFLA_GSO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GSO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_GRO_IPV4_MAX_SIZE}, 65536], [{nla_len=8, nla_type=IFLA_TSO_MAX_SIZE}, 524280], [{nla_len=8, nla_type=IFLA_TSO_MAX_SEGS}, 65535], [{nla_len=8, nla_type=0x42 /* IFLA_??? */}, "\x00\x00\x00\x00"], [{nla_len=8, nla_type=IFLA_NUM_RX_QUEUES}, 1], [{nla_len=5, nla_type=IFLA_CARRIER}, 0], [{nla_len=8, nla_type=IFLA_CARRIER_CHANGES}, 183], [{nla_len=8, nla_type=IFLA_CARRIER_UP_COUNT}, 91], [{nla_len=8, nla_type=IFLA_CARRIER_DOWN_COUNT}, 92], [{nla_len=5, nla_type=IFLA_PROTO_DOWN}, 0], [{nla_len=10, nla_type=IFLA_ADDRESS}, 7a:cb:d1:93:fc:14], [{nla_len=10, nla_type=IFLA_BROADCAST}, ff:ff:ff:ff:ff:ff], [{nla_len=204, nla_type=IFLA_STATS64}, {rx_packets=91, tx_packets=95, rx_bytes=2548, tx_bytes=12203, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=905, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0, rx_otherhost_dropped=0}], [{nla_len=100, nla_type=IFLA_STATS}, {rx_packets=91, tx_packets=95, rx_bytes=2548, tx_bytes=12203, rx_errors=0, tx_errors=0, rx_dropped=0, tx_dropped=905, multicast=0, collisions=0, rx_length_errors=0, rx_over_errors=0, rx_crc_errors=0, rx_frame_errors=0, rx_fifo_errors=0, rx_missed_errors=0, tx_aborted_errors=0, tx_carrier_errors=0, tx_fifo_errors=0, tx_heartbeat_errors=0, tx_window_errors=0, rx_compressed=0, tx_compressed=0, rx_nohandler=0}], [{nla_len=12, nla_type=IFLA_XDP}, [{nla_len=5, nla_type=IFLA_XDP_ATTACHED}, XDP_ATTACHED_NONE]], [{nla_len=444, nla_type=IFLA_LINKINFO}, [[{nla_len=11, nla_type=IFLA_INFO_KIND}, "bridge"], [{nla_len=428, nla_type=IFLA_INFO_DATA}, [[{nla_len=12, nla_type=IFLA_BR_HELLO_TIMER}, 0], [{nla_len=12, nla_type=IFLA_BR_TCN_TIMER}, 0], [{nla_len=12, nla_type=IFLA_BR_TOPOLOGY_CHANGE_TIMER}, 0], [{nla_len=12, nla_type=IFLA_BR_GC_TIMER}, 23387 /* 233.87 s */], [{nla_len=8, nla_type=IFLA_BR_FORWARD_DELAY}, 1500 /* 15.00 s */], [{nla_len=8, nla_type=IFLA_BR_HELLO_TIME}, 200 /* 2.00 s */], [{nla_len=8, nla_type=IFLA_BR_MAX_AGE}, 2000 /* 20.00 s */], [{nla_len=8, nla_type=IFLA_BR_AGEING_TIME}, 30000 /* 300.00 s */], [{nla_len=8, nla_type=IFLA_BR_STP_STATE}, 0], [{nla_len=6, nla_type=IFLA_BR_PRIORITY}, 32768], [{nla_len=5, nla_type=IFLA_BR_VLAN_FILTERING}, 0], [{nla_len=6, nla_type=IFLA_BR_GROUP_FWD_MASK}, 0], [{nla_len=12, nla_type=IFLA_BR_BRIDGE_ID}, {prio=[128, 0], addr=7a:cb:d1:93:fc:14}], [{nla_len=12, nla_type=IFLA_BR_ROOT_ID}, {prio=[128, 0], addr=7a:cb:d1:93:fc:14}], [{nla_len=6, nla_type=IFLA_BR_ROOT_PORT}, 0], [{nla_len=8, nla_type=IFLA_BR_ROOT_PATH_COST}, 0], [{nla_len=5, nla_type=IFLA_BR_TOPOLOGY_CHANGE}, 0], [{nla_len=5, nla_type=IFLA_BR_TOPOLOGY_CHANGE_DETECTED}, 0], [{nla_len=10, nla_type=IFLA_BR_GROUP_ADDR}, 01:80:c2:00:00:00], [{nla_len=12, nla_type=IFLA_BR_MULTI_BOOLOPT}, {optval=0, optmask=1<<BR_BOOLOPT_NO_LL_LEARN|1<<BR_BOOLOPT_MCAST_VLAN_SNOOPING|1<<BR_BOOLOPT_MST_ENABLE|0x8}], [{nla_len=8, nla_type=0x30 /* IFLA_BR_??? */}, "\x00\x00\x00\x00"], [{nla_len=8, nla_type=0x31 /* IFLA_BR_??? */}, "\x00\x00\x00\x00"], [{nla_len=6, nla_type=IFLA_BR_VLAN_PROTOCOL}, htons(ETH_P_8021Q)], [{nla_len=6, nla_type=IFLA_BR_VLAN_DEFAULT_PVID}, 1], [{nla_len=5, nla_type=IFLA_BR_VLAN_STATS_ENABLED}, 0], [{nla_len=5, nla_type=IFLA_BR_VLAN_STATS_PER_PORT}, 0], [{nla_len=5, nla_type=IFLA_BR_MCAST_ROUTER}, 1], [{nla_len=5, nla_type=IFLA_BR_MCAST_SNOOPING}, 1], [{nla_len=5, nla_type=IFLA_BR_MCAST_QUERY_USE_IFADDR}, 0], [{nla_len=5, nla_type=IFLA_BR_MCAST_QUERIER}, 0], [{nla_len=5, nla_type=IFLA_BR_MCAST_STATS_ENABLED}, 0], [{nla_len=8, nla_type=IFLA_BR_MCAST_HASH_ELASTICITY}, 16], ...]]]], ...]], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 1900 <0.000014>
+12:52:02.054543 recvmsg(10, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[{nlmsg_len=20, nlmsg_type=NLMSG_DONE, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989722, nlmsg_pid=72959}, 0], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 20 <0.000008>
+12:52:02.054581 sendto(10, [{nlmsg_len=20, nlmsg_type=RTM_GETADDR, nlmsg_flags=NLM_F_REQUEST|NLM_F_DUMP, nlmsg_seq=1780989723, nlmsg_pid=0}, {ifa_family=AF_UNSPEC, ...}], 20, 0, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 20 <0.000018>
+12:52:02.054624 recvmsg(10, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[[{nlmsg_len=76, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989723, nlmsg_pid=72959}, {ifa_family=AF_INET, ifa_prefixlen=8, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_HOST, ifa_index=if_nametoindex("lo")}, [[{nla_len=8, nla_type=IFA_ADDRESS}, inet_addr("127.0.0.1")], [{nla_len=8, nla_type=IFA_LOCAL}, inet_addr("127.0.0.1")], [{nla_len=7, nla_type=IFA_LABEL}, "lo"], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=615, tstamp=615}]]], [{nlmsg_len=88, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989723, nlmsg_pid=72959}, {ifa_family=AF_INET, ifa_prefixlen=24, ifa_flags=0, ifa_scope=RT_SCOPE_UNIVERSE, ifa_index=if_nametoindex("wlo1")}, [[{nla_len=8, nla_type=IFA_ADDRESS}, inet_addr("192.168.31.221")], [{nla_len=8, nla_type=IFA_LOCAL}, inet_addr("192.168.31.221")], [{nla_len=8, nla_type=IFA_BROADCAST}, inet_addr("192.168.31.255")], [{nla_len=9, nla_type=IFA_LABEL}, "wlo1"], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_NOPREFIXROUTE], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=26818, ifa_valid=26818, cstamp=300542, tstamp=447044}]]], [{nlmsg_len=88, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989723, nlmsg_pid=72959}, {ifa_family=AF_INET, ifa_prefixlen=16, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_UNIVERSE, ifa_index=if_nametoindex("docker0")}, [[{nla_len=8, nla_type=IFA_ADDRESS}, inet_addr("172.17.0.1")], [{nla_len=8, nla_type=IFA_LOCAL}, inet_addr("172.17.0.1")], [{nla_len=8, nla_type=IFA_BROADCAST}, inet_addr("172.17.255.255")], [{nla_len=12, nla_type=IFA_LABEL}, "docker0"], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=1768, tstamp=1768}]]], [{nlmsg_len=72, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989723, nlmsg_pid=72959}, {ifa_family=AF_INET6, ifa_prefixlen=128, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_HOST, ifa_index=if_nametoindex("lo")}, [[{nla_len=20, nla_type=IFA_ADDRESS}, inet_pton(AF_INET6, "::1")], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=615, tstamp=615}], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT|IFA_F_NOPREFIXROUTE]]], [{nlmsg_len=72, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989723, nlmsg_pid=72959}, {ifa_family=AF_INET6, ifa_prefixlen=64, ifa_flags=IFA_F_SECONDARY, ifa_scope=RT_SCOPE_UNIVERSE, ifa_index=if_nametoindex("wlo1")}, [[{nla_len=20, nla_type=IFA_ADDRESS}, inet_pton(AF_INET6, "2409:40e2:20b7:55e9:f7b1:f767:b1d0:6700")], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=19083, ifa_valid=19083, cstamp=300155, tstamp=496168}], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_SECONDARY]]], [{nlmsg_len=72, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989723, nlmsg_pid=72959}, {ifa_family=AF_INET6, ifa_prefixlen=64, ifa_flags=0, ifa_scope=RT_SCOPE_UNIVERSE, ifa_index=if_nametoindex("wlo1")}, [[{nla_len=20, nla_type=IFA_ADDRESS}, inet_pton(AF_INET6, "2409:40e2:20b7:55e9:f5bc:30bc:877f:5f4d")], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=19083, ifa_valid=19083, cstamp=300155, tstamp=496168}], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_MANAGETEMPADDR|IFA_F_NOPREFIXROUTE]]], [{nlmsg_len=72, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989723, nlmsg_pid=72959}, {ifa_family=AF_INET6, ifa_prefixlen=64, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_LINK, ifa_index=if_nametoindex("wlo1")}, [[{nla_len=20, nla_type=IFA_ADDRESS}, inet_pton(AF_INET6, "fe80::ae92:828a:26be:12")], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=299974, tstamp=299974}], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT|IFA_F_NOPREFIXROUTE]]], [{nlmsg_len=80, nlmsg_type=RTM_NEWADDR, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989723, nlmsg_pid=72959}, {ifa_family=AF_INET6, ifa_prefixlen=64, ifa_flags=IFA_F_PERMANENT, ifa_scope=RT_SCOPE_LINK, ifa_index=if_nametoindex("docker0")}, [[{nla_len=20, nla_type=IFA_ADDRESS}, inet_pton(AF_INET6, "fe80::78cb:d1ff:fe93:fc14")], [{nla_len=20, nla_type=IFA_CACHEINFO}, {ifa_prefered=4294967295, ifa_valid=4294967295, cstamp=1792, tstamp=1792}], [{nla_len=8, nla_type=IFA_FLAGS}, IFA_F_PERMANENT], [{nla_len=5, nla_type=IFA_PROTO}, "\x03"]]]], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 620 <0.000009>
+12:52:02.054720 recvmsg(10, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[{nlmsg_len=20, nlmsg_type=NLMSG_DONE, nlmsg_flags=NLM_F_MULTI, nlmsg_seq=1780989723, nlmsg_pid=72959}, 0], iov_len=8192}], msg_iovlen=1, msg_controllen=0, msg_flags=0}, 0) = 20 <0.000007>
+12:52:02.054752 close(10)               = 0 <0.000010>
+12:52:02.054779 openat(AT_FDCWD, "/proc/net/wireless", O_RDONLY) = 10 <0.000021>
+12:52:02.054821 fstat(10, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0 <0.000006>
+12:52:02.054843 read(10, "Inter-| sta-|   Quality        |"..., 1024) = 239 <0.000017>
+12:52:02.054880 close(10)               = 0 <0.000009>
+12:52:02.054906 write(1, "                                "..., 129) = 129 <0.000016>
+12:52:02.054943 openat(AT_FDCWD, "/sys/class/power_supply/BAT0/capacity", O_RDONLY) = 10 <0.000020>
+12:52:02.054982 openat(AT_FDCWD, "/sys/class/power_supply/BAT0/status", O_RDONLY) = 11 <0.000011>
+12:52:02.055008 fstat(10, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000006>
+12:52:02.055029 read(10, "100\n", 4096) = 4 <0.000275>
+12:52:02.055332 fstat(11, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0 <0.000007>
+12:52:02.055357 read(11, "Full\n", 4096) = 5 <0.000008>
+12:52:02.055382 close(11)               = 0 <0.000008>
+12:52:02.055404 close(10)               = 0 <0.000007>
+12:52:02.055427 write(1, "                                "..., 106) = 106 <0.000013>
+12:52:02.055461 write(1, "                                "..., 43) = 43 <0.000009>
+12:52:02.055491 write(1, "                                "..., 126) = 126 <0.000009>
+12:52:02.055520 write(1, "                                "..., 139) = 139 <0.000015>
+12:52:02.055574 exit_group(0)           = ?
+12:52:02.055734 +++ exited with 0 +++

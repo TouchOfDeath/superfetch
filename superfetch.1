@@ -1,0 +1,25 @@
+.TH SUPERFETCH 1
+.SH NAME
+superfetch \- A blazing fast system information tool
+.SH SYNOPSIS
+.B superfetch
+[\fIOPTIONS\fR]
+.SH DESCRIPTION
+.B superfetch
+is a system information tool written in C that prioritizes extreme performance (executing in ~2 milliseconds). It displays operating system details, hardware information, and package counts alongside your OS logo or custom images via Kitty graphics protocol.
+.SH OPTIONS
+.TP
+.BR \-\-json
+Export the parsed system data as a pure JSON object instead of printing it visually. Ideal for piping into UI widgets (like Waybar or Eww).
+.TP
+.BR \-V ", " \-\-version
+Print version information and exit.
+.TP
+.BR \-h ", " \-\-help
+Show help message and exit.
+.SH CONFIGURATION
+You can configure \fBsuperfetch\fR by editing \fBconfig.h\fR and running \fBmake\fR to recompile the binary. If you use Pywal, \fBsuperfetch\fR will automatically inherit your terminal color palette from \fI~/.cache/wal/colors\fR. 
+
+To compile without image support and save space, run \fBmake pure\fR.
+.SH AUTHOR
+Antigravity
