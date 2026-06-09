@@ -12,7 +12,17 @@ Superfetch is an ultra-optimized alternative to tools like Neofetch and Fastfetc
 
 ## Installation
 
-You can download the latest `.deb` package from the [Releases](https://github.com/) page and install it globally:
+### Ubuntu / Linux Mint / Pop!_OS (Recommended)
+You can easily install Superfetch via the official PPA:
+
+```bash
+sudo add-apt-repository ppa:lifelonglearner/superfetch
+sudo apt update
+sudo apt install superfetch
+```
+
+### Manual Installation
+You can also download the latest `.deb` package from the [Releases](https://github.com/TouchOfDeath/superfetch/releases) page and install it manually:
 
 ```bash
 sudo apt install ./superfetch-1.0.deb
@@ -23,7 +33,7 @@ sudo apt install ./superfetch-1.0.deb
 To compile the latest version from source:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/superfetch.git
+git clone https://github.com/TouchOfDeath/superfetch.git
 cd superfetch
 make
 sudo make install
