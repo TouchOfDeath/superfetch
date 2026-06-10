@@ -1,0 +1,17 @@
+superfetch (1.0.0-3) noble; urgency=medium
+
+  * Enable ARM architectures (arm64 and armhf)
+
+ -- TouchOfDeath <a.sahoo.work@gmail.com>  Wed, 10 Jun 2026 11:39:25 +0530
+
+superfetch (1.0.0-2) noble; urgency=medium
+
+  * Rebuild for Ubuntu Noble.
+
+ -- TouchOfDeath <a.sahoo.work@gmail.com>  Tue, 09 Jun 2026 17:24:14 +0530
+
+superfetch (1.0.0-1) focal; urgency=medium
+
+  * Initial release.
+
+ -- TouchOfDeath <a.sahoo.work@gmail.com>  Tue, 09 Jun 2026 14:54:51 +0530
