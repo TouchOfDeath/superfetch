@@ -185,32 +185,32 @@ static void parse_pywal(void) {
     fclose(f);
 
     if (lines[4][0] == '#') { // Color 4 (Blue/Accent)
-        int r,g,b;
+        unsigned int r,g,b;
         if (sscanf(lines[4], "#%02x%02x%02x", &r, &g, &b) == 3) {
-            snprintf(COLOR_USER, 32, "\033[38;2;%d;%d;%dm", r, g, b);
-            snprintf(COLOR_HOST, 32, "\033[38;2;%d;%d;%dm", r, g, b);
-            snprintf(COLOR_BAR_FILL, 32, "\033[38;2;%d;%d;%dm", r, g, b);
+            snprintf(COLOR_USER, 32, "\033[38;2;%u;%u;%um", r, g, b);
+            snprintf(COLOR_HOST, 32, "\033[38;2;%u;%u;%um", r, g, b);
+            snprintf(COLOR_BAR_FILL, 32, "\033[38;2;%u;%u;%um", r, g, b);
         }
     }
     if (lines[8][0] == '#') { // Color 8 (Dark Gray)
-        int r,g,b;
+        unsigned int r,g,b;
         if (sscanf(lines[8], "#%02x%02x%02x", &r, &g, &b) == 3) {
-            snprintf(COLOR_AT, 32, "\033[38;2;%d;%d;%dm", r, g, b);
-            snprintf(COLOR_SEP, 32, "\033[38;2;%d;%d;%dm", r, g, b);
-            snprintf(COLOR_BAR_EMPTY, 32, "\033[38;2;%d;%d;%dm", r, g, b);
+            snprintf(COLOR_AT, 32, "\033[38;2;%u;%u;%um", r, g, b);
+            snprintf(COLOR_SEP, 32, "\033[38;2;%u;%u;%um", r, g, b);
+            snprintf(COLOR_BAR_EMPTY, 32, "\033[38;2;%u;%u;%um", r, g, b);
         }
     }
     if (lines[6][0] == '#') { // Color 6 (Cyan/Accent)
-        int r,g,b;
+        unsigned int r,g,b;
         if (sscanf(lines[6], "#%02x%02x%02x", &r, &g, &b) == 3) {
-            snprintf(COLOR_LABEL, 32, "\033[38;2;%d;%d;%dm", r, g, b);
-            snprintf(COLOR_ICON, 32, "\033[38;2;%d;%d;%dm", r, g, b);
+            snprintf(COLOR_LABEL, 32, "\033[38;2;%u;%u;%um", r, g, b);
+            snprintf(COLOR_ICON, 32, "\033[38;2;%u;%u;%um", r, g, b);
         }
     }
     if (lines[7][0] == '#') { // Color 7 (White/Foreground)
-        int r,g,b;
+        unsigned int r,g,b;
         if (sscanf(lines[7], "#%02x%02x%02x", &r, &g, &b) == 3) {
-            snprintf(COLOR_VALUE, 32, "\033[38;2;%d;%d;%dm", r, g, b);
+            snprintf(COLOR_VALUE, 32, "\033[38;2;%u;%u;%um", r, g, b);
         }
     }
     g_colors_from_pywal = 1; // Signal to parse_xresources to skip
@@ -266,11 +266,11 @@ static void parse_gtk(void) {
 //  RUNTIME CONFIGURATION HELPERS
 // ════════════════════════════════════════════════════════════
 
-static void parse_hex_color(const char *hex, char *out, size_t sz) {
-    if (!hex || hex[0] != '#' || strlen(hex) < 7) return;
-    int r = 0, g = 0, b = 0;
+static void parse_hex_color(const char *hex, char *buf, size_t sz) {
+    if (hex[0] != '#') return;
+    unsigned int r, g, b;
     if (sscanf(hex + 1, "%02x%02x%02x", &r, &g, &b) == 3)
-        snprintf(out, sz, "\033[38;2;%d;%d;%dm", r, g, b);
+        snprintf(buf, sz, "\033[38;2;%u;%u;%um", r, g, b);
 }
 
 static void parse_xresources(void) {
@@ -388,9 +388,12 @@ static CpuStat read_cpu_stat(void) {
 static int pkg_pacman = 0, pkg_dpkg = 0, pkg_flatpak = 0, pkg_snap = 0, pkg_apk = 0, pkg_brew = 0;
 static char async_cpu_str[256] = {0};
 static char async_gpu_str[256] = {0};
+static char async_disk_str[512] = {0};
+static char async_net_str[256] = {0};
+static char async_batt_str[256] = {0};
 
-static pthread_t t_pkg, t_cpu, t_gpu;
-static int t_pkg_started = 0, t_cpu_started = 0, t_gpu_started = 0;
+static pthread_t t_pkg, t_cpu, t_gpu, t_disk, t_net, t_batt;
+static int t_pkg_started = 0, t_cpu_started = 0, t_gpu_started = 0, t_disk_started = 0, t_net_started = 0, t_batt_started = 0;
 
 static void *worker_packages(void *arg) {
     (void)arg;
@@ -643,12 +646,12 @@ void fetch_os(char *buf, size_t sz) { snprintf(buf, sz, "%s", g_os.pretty); }
 
 void fetch_packages(char *buf, size_t sz) {
     int first = 1; size_t pos = 0;
-    if (pkg_pacman)  { pos += snprintf(buf+pos, sz-pos, "%d (pacman)", pkg_pacman); first = 0; }
-    if (pkg_dpkg)    { pos += snprintf(buf+pos, sz-pos, "%s%d (dpkg)", first?"":", ", pkg_dpkg); first = 0; }
-    if (pkg_apk)     { pos += snprintf(buf+pos, sz-pos, "%s%d (apk)", first?"":", ", pkg_apk); first = 0; }
-    if (pkg_brew)    { pos += snprintf(buf+pos, sz-pos, "%s%d (brew)", first?"":", ", pkg_brew); first = 0; }
-    if (pkg_flatpak) { pos += snprintf(buf+pos, sz-pos, "%s%d (flatpak)", first?"":", ", pkg_flatpak); first = 0; }
-    if (pkg_snap)    { pos += snprintf(buf+pos, sz-pos, "%s%d (snap)", first?"":", ", pkg_snap); first = 0; }
+    if (pkg_pacman)  { snprintf(buf+pos, sz-pos, "%d (pacman)", pkg_pacman); pos = strlen(buf); first = 0; }
+    if (pkg_dpkg)    { snprintf(buf+pos, sz-pos, "%s%d (dpkg)", first?"":", ", pkg_dpkg); pos = strlen(buf); first = 0; }
+    if (pkg_apk)     { snprintf(buf+pos, sz-pos, "%s%d (apk)", first?"":", ", pkg_apk); pos = strlen(buf); first = 0; }
+    if (pkg_brew)    { snprintf(buf+pos, sz-pos, "%s%d (brew)", first?"":", ", pkg_brew); pos = strlen(buf); first = 0; }
+    if (pkg_flatpak) { snprintf(buf+pos, sz-pos, "%s%d (flatpak)", first?"":", ", pkg_flatpak); pos = strlen(buf); first = 0; }
+    if (pkg_snap)    { snprintf(buf+pos, sz-pos, "%s%d (snap)", first?"":", ", pkg_snap); pos = strlen(buf); first = 0; }
     if (first) snprintf(buf+pos, sz-pos, "None");
 }
 
@@ -719,8 +722,8 @@ void fetch_uptime(char *buf, size_t sz) {
     if (sysinfo(&si) != 0) { snprintf(buf, sz, "Unknown"); return; }
     long d = si.uptime / 86400, h = (si.uptime / 3600) % 24, m = (si.uptime / 60) % 60;
     size_t pos = 0;
-    if (d) pos += snprintf(buf+pos, sz-pos, "%ld day%s, ", d, d != 1 ? "s" : "");
-    if (h) pos += snprintf(buf+pos, sz-pos, "%ld hr%s, ",  h, h != 1 ? "s" : "");
+    if (d) { snprintf(buf+pos, sz-pos, "%ld day%s, ", d, d != 1 ? "s" : ""); pos = strlen(buf); }
+    if (h) { snprintf(buf+pos, sz-pos, "%ld hr%s, ",  h, h != 1 ? "s" : ""); pos = strlen(buf); }
     snprintf(buf+pos, sz-pos, "%ld min%s", m, m != 1 ? "s" : "");
 }
 
@@ -757,9 +760,9 @@ void fetch_cpu_temp(char *buf, size_t sz) {
             if (read_sys_file(path, tmp, sizeof(tmp)) > 0) {
                 if (sscanf(tmp, "%d", &temp_mc) == 1) {
                     ensure_cache_dir();
-                    int fw = open(cache_path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+                    int fw = open(cache_path, O_WRONLY | O_CREAT | O_TRUNC, 0666);
                     if (fw >= 0) {
-                        write(fw, path, strlen(path));
+                        if (write(fw, path, strlen(path)) < 0) { /* ignore */ }
                         close(fw);
                     }
                 }
@@ -801,8 +804,9 @@ void fetch_resolution(char *buf, size_t sz) {
         char mode[64];
         if (fgets(mode, sizeof(mode), f)) {
             char *e = mode+strlen(mode)-1; if (*e=='\n') *e='\0';
-            if (res[0]) strncat(res,", ",sizeof(res)-strlen(res)-1);
-            strncat(res, mode, sizeof(res)-strlen(res)-1);
+            size_t rlen = strlen(res);
+            if (res[0] && rlen < sizeof(res) - 1) { strncat(res, ", ", sizeof(res) - rlen - 1); rlen = strlen(res); }
+            if (rlen < sizeof(res) - 1) strncat(res, mode, sizeof(res) - rlen - 1);
         }
         fclose(f);
     }
@@ -816,10 +820,12 @@ void fetch_memory(char *buf, size_t sz) {
     long used_mib = (total - avail) / 1024, total_mib = total / 1024;
     int pct = (int)(100.0 * (total - avail) / total), filled = (pct * g_bar_width) / 100;
     
-    size_t p = snprintf(buf, sz, "%ld MiB / %ld MiB  [", used_mib, total_mib);
+    snprintf(buf, sz, "%ld MiB / %ld MiB  [", used_mib, total_mib);
+    size_t p = strlen(buf);
     for (int i = 0; i < g_bar_width && p < sz; i++) {
-        if (i < filled) p += snprintf(buf+p, sz-p, "%s█%s", COLOR_BAR_FILL, COLOR_RESET);
-        else p += snprintf(buf+p, sz-p, "%s░%s", COLOR_BAR_EMPTY, COLOR_RESET);
+        if (i < filled) snprintf(buf+p, sz-p, "%s█%s", COLOR_BAR_FILL, COLOR_RESET);
+        else snprintf(buf+p, sz-p, "%s░%s", COLOR_BAR_EMPTY, COLOR_RESET);
+        p = strlen(buf);
     }
     snprintf(buf+p, sz-p, "]  %d%%", pct);
 }
@@ -830,17 +836,20 @@ void fetch_swap(char *buf, size_t sz) {
     long used_mib = (total - free) / 1024, total_mib = total / 1024;
     int pct = (int)(100.0 * (total - free) / total), filled = (pct * g_bar_width) / 100;
     
-    size_t p = snprintf(buf, sz, "%ld MiB / %ld MiB  [", used_mib, total_mib);
+    snprintf(buf, sz, "%ld MiB / %ld MiB  [", used_mib, total_mib);
+    size_t p = strlen(buf);
     for (int i = 0; i < g_bar_width && p < sz; i++) {
-        if (i < filled) p += snprintf(buf+p, sz-p, "%s█%s", COLOR_BAR_FILL, COLOR_RESET);
-        else p += snprintf(buf+p, sz-p, "%s░%s", COLOR_BAR_EMPTY, COLOR_RESET);
+        if (i < filled) snprintf(buf+p, sz-p, "%s█%s", COLOR_BAR_FILL, COLOR_RESET);
+        else snprintf(buf+p, sz-p, "%s░%s", COLOR_BAR_EMPTY, COLOR_RESET);
+        p = strlen(buf);
     }
     snprintf(buf+p, sz-p, "]  %d%%", pct);
 }
 
-void fetch_disk(char *buf, size_t sz) {
+static void *worker_disk(void *arg) {
+    (void)arg; char *buf = async_disk_str; size_t sz = sizeof(async_disk_str);
     FILE *f = fopen("/proc/mounts", "r");
-    if (!f) { snprintf(buf, sz, "Unknown"); return; }
+    if (!f) { snprintf(buf, sz, "Unknown"); return NULL; }
     char line[512]; size_t pos = 0; int count = 0;
     while (fgets(line, sizeof(line), f)) {
         char dev[256], mnt[256], fs[256];
@@ -853,9 +862,10 @@ void fetch_disk(char *buf, size_t sz) {
                     double used_gb = total_gb - free_gb;
                     int pct = (int)(100.0 * used_gb / total_gb);
                     
-                    if (count > 0 && pos < sz) pos += snprintf(buf+pos, sz-pos, "   ");
-                    pos += snprintf(buf+pos, sz-pos, "%s%s%s %.1f/%.1f GiB (%d%%)", 
+                    if (count > 0 && pos < sz) { snprintf(buf+pos, sz-pos, "   "); pos = strlen(buf); }
+                    snprintf(buf+pos, sz-pos, "%s%s%s %.1f/%.1f GiB (%d%%)", 
                                     COLOR_ICON, mnt, COLOR_RESET, used_gb, total_gb, pct);
+                    pos = strlen(buf);
                     count++;
                 }
             }
@@ -863,9 +873,18 @@ void fetch_disk(char *buf, size_t sz) {
     }
     fclose(f);
     if (count == 0) snprintf(buf, sz, "Unknown");
+    return NULL;
 }
 
-void fetch_network(char *buf, size_t sz) {
+void fetch_disk(char *buf, size_t sz) {
+#if ENABLE_THREADS
+    if (t_disk_started) { pthread_join(t_disk, NULL); t_disk_started = 0; }
+#endif
+    snprintf(buf, sz, "%s", async_disk_str);
+}
+
+static void *worker_network(void *arg) {
+    (void)arg; char *buf = async_net_str; size_t sz = sizeof(async_net_str);
     struct ifaddrs *ifaddr, *ifa;
     char ip[INET_ADDRSTRLEN]={0}, iface[IFNAMSIZ]={0};
     if (getifaddrs(&ifaddr)==0) {
@@ -880,23 +899,34 @@ void fetch_network(char *buf, size_t sz) {
     int signal = -1;
     FILE *f = fopen("/proc/net/wireless","r");
     if (f) {
-        char line[256]; fgets(line,sizeof(line),f); fgets(line,sizeof(line),f);
+        char line[256]; 
+        if (fgets(line,sizeof(line),f)) { /* ignore */ }
+        if (fgets(line,sizeof(line),f)) { /* ignore */ }
         while (fgets(line,sizeof(line),f)) {
             char wif[IFNAMSIZ]; int st; float lnk, lvl, nse;
             if (sscanf(line," %15[^:]: %d %f %f %f",wif,&st,&lnk,&lvl,&nse)>=4) { signal=(int)lnk; break; }
         }
         fclose(f);
     }
-    if (!ip[0]) { snprintf(buf, sz, "Disconnected"); return; }
+    if (!ip[0]) { snprintf(buf, sz, "Disconnected"); return NULL; }
     if (signal >= 0) {
         const char *bars = (signal>=60) ? "▂▄▆█" : (signal>=40) ? "▂▄▆_" : (signal>=20) ? "▂▄__" : "▂___";
         snprintf(buf, sz, "%s%s%s  %s  %s%s%s", COLOR_ICON, iface, COLOR_RESET, ip, COLOR_BAR_FILL, bars, COLOR_RESET);
     } else {
         snprintf(buf, sz, "%s%s%s  %s", COLOR_ICON, iface, COLOR_RESET, ip);
     }
+    return NULL;
 }
 
-void fetch_battery(char *buf, size_t sz) {
+void fetch_network(char *buf, size_t sz) {
+#if ENABLE_THREADS
+    if (t_net_started) { pthread_join(t_net, NULL); t_net_started = 0; }
+#endif
+    snprintf(buf, sz, "%s", async_net_str);
+}
+
+static void *worker_battery(void *arg) {
+    (void)arg; char *buf = async_batt_str; size_t sz = sizeof(async_batt_str);
     const char *paths[] = { "/sys/class/power_supply/BAT0", "/sys/class/power_supply/BAT1", "/sys/class/power_supply/battery", NULL };
     for (int i = 0; paths[i]; i++) {
         char p[256]; snprintf(p, sizeof(p), "%s/capacity", paths[i]);
@@ -910,9 +940,17 @@ void fetch_battery(char *buf, size_t sz) {
         }
         const char *bicon = (strcmp(status,"Charging")==0) ? "⚡" : (cap>=90) ? "󰁹" : (cap>=70) ? "󰂀" : (cap>=50) ? "󰁾" : (cap>=30) ? "󰁼" : "󰁺";
         snprintf(buf, sz, "%s %d%%  [%s]", bicon, cap, status);
-        return;
+        return NULL;
     }
     snprintf(buf, sz, "N/A");
+    return NULL;
+}
+
+void fetch_battery(char *buf, size_t sz) {
+#if ENABLE_THREADS
+    if (t_batt_started) { pthread_join(t_batt, NULL); t_batt_started = 0; }
+#endif
+    snprintf(buf, sz, "%s", async_batt_str);
 }
 
 void fetch_datetime(char *buf, size_t sz) {
@@ -979,12 +1017,14 @@ void fetch_cpu_usage(char *buf, size_t sz) {
     long long total_d = g_cpustat[1].total - g_cpustat[0].total;
     if (total_d <= 0) { snprintf(buf, sz, "N/A (Exec < 1 jiffy)"); return; }
     int pct = (int)(100LL * (total_d - idle_d) / total_d);
-    if (pct < 0) pct = 0; if (pct > 100) pct = 100;
+    pct = pct < 0 ? 0 : (pct > 100 ? 100 : pct);
     int filled = (pct * g_bar_width) / 100;
-    size_t p = snprintf(buf, sz, "%d%%  [", pct);
+    snprintf(buf, sz, "%d%%  [", pct);
+    size_t p = strlen(buf);
     for (int i = 0; i < g_bar_width && p < sz; i++) {
-        if (i < filled) p += snprintf(buf+p, sz-p, "%s\xe2\x96\x88%s", COLOR_BAR_FILL, COLOR_RESET);
-        else             p += snprintf(buf+p, sz-p, "%s\xe2\x96\x91%s", COLOR_BAR_EMPTY, COLOR_RESET);
+        if (i < filled) snprintf(buf+p, sz-p, "%s\xe2\x96\x88%s", COLOR_BAR_FILL, COLOR_RESET);
+        else             snprintf(buf+p, sz-p, "%s\xe2\x96\x91%s", COLOR_BAR_EMPTY, COLOR_RESET);
+        p = strlen(buf);
     }
     snprintf(buf+p, sz-p, "]");
 }
@@ -1087,6 +1127,9 @@ int main(int argc, char *argv[]) {
     if (pthread_create(&t_pkg, &attr, worker_packages, NULL) == 0) t_pkg_started = 1;
     if (pthread_create(&t_cpu, &attr, worker_cpu, NULL) == 0) t_cpu_started = 1;
     if (pthread_create(&t_gpu, &attr, worker_gpu, NULL) == 0) t_gpu_started = 1;
+    if (pthread_create(&t_disk, &attr, worker_disk, NULL) == 0) t_disk_started = 1;
+    if (pthread_create(&t_net, &attr, worker_network, NULL) == 0) t_net_started = 1;
+    if (pthread_create(&t_batt, &attr, worker_battery, NULL) == 0) t_batt_started = 1;
 #else
     long long t0, t1;
     t0 = get_time_us(); worker_packages(NULL); t1 = get_time_us();
@@ -1095,6 +1138,7 @@ int main(int argc, char *argv[]) {
     long long time_cpu = t1 - t0;
     t0 = get_time_us(); worker_gpu(NULL); t1 = get_time_us();
     long long time_gpu = t1 - t0;
+    worker_disk(NULL); worker_network(NULL); worker_battery(NULL);
 #endif
     pthread_attr_destroy(&attr);
 
@@ -1243,6 +1287,9 @@ int main(int argc, char *argv[]) {
         if (t_pkg_started)       pthread_join(t_pkg, NULL);
         if (t_cpu_started)       pthread_join(t_cpu, NULL);
         if (t_gpu_started)       pthread_join(t_gpu, NULL);
+        if (t_disk_started)      pthread_join(t_disk, NULL);
+        if (t_net_started)       pthread_join(t_net, NULL);
+        if (t_batt_started)      pthread_join(t_batt, NULL);
         if (t_cpu_usage_started) pthread_join(t_cpu_usage_t, NULL);
         return 0;
     }
@@ -1464,6 +1511,9 @@ int main(int argc, char *argv[]) {
     if (t_pkg_started)       pthread_join(t_pkg, NULL);
     if (t_cpu_started)       pthread_join(t_cpu, NULL);
     if (t_gpu_started)       pthread_join(t_gpu, NULL);
+    if (t_disk_started)      pthread_join(t_disk, NULL);
+    if (t_net_started)       pthread_join(t_net, NULL);
+    if (t_batt_started)      pthread_join(t_batt, NULL);
     if (t_cpu_usage_started) pthread_join(t_cpu_usage_t, NULL);
 
     return 0;

@@ -15,6 +15,10 @@ all: superfetch
 superfetch: superfetch.c config.h logos.h stb_image.h
 	$(CC) $(CFLAGS) -DENABLE_IMAGES $(LDFLAGS) -o superfetch superfetch.c $(LIBS)
 
+# Build fully static binary for ultra-performance
+static: superfetch.c config.h logos.h stb_image.h
+	$(CC) $(CFLAGS) -DENABLE_IMAGES $(LDFLAGS) -static -o superfetch superfetch.c $(LIBS)
+
 # Build without images (tiny binary)
 pure:
 	$(CC) $(CFLAGS) $(LDFLAGS) -o superfetch superfetch.c $(LIBS)
