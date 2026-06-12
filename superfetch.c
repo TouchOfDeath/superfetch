@@ -220,19 +220,28 @@ typedef struct { char pretty[256]; char id[64]; char id_like[128]; } OsInfo;
 static OsInfo g_os = {{0},{0},{0}};
 
 static void parse_os_release(void) {
-    FILE *f = fopen("/etc/os-release", "r");
-    if (!f) { strcpy(g_os.id, "linux"); strcpy(g_os.pretty, "Unknown Linux"); return; }
-    char line[256];
-    while (fgets(line, sizeof(line), f)) {
-        if (!g_os.pretty[0] && strncmp(line, "PRETTY_NAME=", 12) == 0) {
-            strncpy(g_os.pretty, line+12, sizeof(g_os.pretty)-1); strip_quotes_nl(g_os.pretty);
-        } else if (!g_os.id_like[0] && strncmp(line, "ID_LIKE=", 8) == 0) {
-            strncpy(g_os.id_like, line+8, sizeof(g_os.id_like)-1); strip_quotes_nl(g_os.id_like);
-        } else if (!g_os.id[0] && strncmp(line, "ID=", 3) == 0) {
-            strncpy(g_os.id, line+3, sizeof(g_os.id)-1); strip_quotes_nl(g_os.id);
-        }
+    char buf[4096];
+    if (read_sys_file("/etc/os-release", buf, sizeof(buf)) <= 0) {
+        strcpy(g_os.id, "linux"); strcpy(g_os.pretty, "Unknown Linux"); return;
     }
-    fclose(f);
+    char *p = buf;
+    while (*p) {
+        if (!g_os.pretty[0] && strncmp(p, "PRETTY_NAME=", 12) == 0) {
+            p += 12; char *end = strchr(p, '\n'); size_t len = end ? (size_t)(end - p) : strlen(p);
+            if (len >= sizeof(g_os.pretty)) len = sizeof(g_os.pretty) - 1;
+            memcpy(g_os.pretty, p, len); g_os.pretty[len] = '\0'; strip_quotes_nl(g_os.pretty);
+        } else if (!g_os.id_like[0] && strncmp(p, "ID_LIKE=", 8) == 0) {
+            p += 8; char *end = strchr(p, '\n'); size_t len = end ? (size_t)(end - p) : strlen(p);
+            if (len >= sizeof(g_os.id_like)) len = sizeof(g_os.id_like) - 1;
+            memcpy(g_os.id_like, p, len); g_os.id_like[len] = '\0'; strip_quotes_nl(g_os.id_like);
+        } else if (!g_os.id[0] && strncmp(p, "ID=", 3) == 0) {
+            p += 3; char *end = strchr(p, '\n'); size_t len = end ? (size_t)(end - p) : strlen(p);
+            if (len >= sizeof(g_os.id)) len = sizeof(g_os.id) - 1;
+            memcpy(g_os.id, p, len); g_os.id[len] = '\0'; strip_quotes_nl(g_os.id);
+        }
+        while (*p && *p != '\n') p++;
+        if (*p == '\n') p++;
+    }
     if (!g_os.id[0]) strcpy(g_os.id, "linux");
     if (!g_os.pretty[0]) strcpy(g_os.pretty, "Unknown Linux");
 }
@@ -245,21 +254,30 @@ static void parse_gtk(void) {
     if (!home) return;
     char path[512];
     snprintf(path, sizeof(path), "%s/.config/gtk-3.0/settings.ini", home);
-    FILE *f = fopen(path, "r");
-    if (!f) return;
-    char line[256];
-    while (fgets(line, sizeof(line), f)) {
-        if (!g_gtk.theme[0] && strncmp(line, "gtk-theme-name=", 15) == 0) {
-            strncpy(g_gtk.theme, line+15, sizeof(g_gtk.theme)-1); strip_quotes_nl(g_gtk.theme);
-        } else if (!g_gtk.icons[0] && strncmp(line, "gtk-icon-theme-name=", 20) == 0) {
-            strncpy(g_gtk.icons, line+20, sizeof(g_gtk.icons)-1); strip_quotes_nl(g_gtk.icons);
-        } else if (!g_gtk.cursor[0] && strncmp(line, "gtk-cursor-theme-name=", 22) == 0) {
-            strncpy(g_gtk.cursor, line+22, sizeof(g_gtk.cursor)-1); strip_quotes_nl(g_gtk.cursor);
-        } else if (!g_gtk.font[0] && strncmp(line, "gtk-font-name=", 14) == 0) {
-            strncpy(g_gtk.font, line+14, sizeof(g_gtk.font)-1); strip_quotes_nl(g_gtk.font);
+    char buf[4096];
+    if (read_sys_file(path, buf, sizeof(buf)) <= 0) return;
+    char *p = buf;
+    while (*p) {
+        if (!g_gtk.theme[0] && strncmp(p, "gtk-theme-name=", 15) == 0) {
+            p += 15; char *end = strchr(p, '\n'); size_t len = end ? (size_t)(end - p) : strlen(p);
+            if (len >= sizeof(g_gtk.theme)) len = sizeof(g_gtk.theme) - 1;
+            memcpy(g_gtk.theme, p, len); g_gtk.theme[len] = '\0'; strip_quotes_nl(g_gtk.theme);
+        } else if (!g_gtk.icons[0] && strncmp(p, "gtk-icon-theme-name=", 20) == 0) {
+            p += 20; char *end = strchr(p, '\n'); size_t len = end ? (size_t)(end - p) : strlen(p);
+            if (len >= sizeof(g_gtk.icons)) len = sizeof(g_gtk.icons) - 1;
+            memcpy(g_gtk.icons, p, len); g_gtk.icons[len] = '\0'; strip_quotes_nl(g_gtk.icons);
+        } else if (!g_gtk.cursor[0] && strncmp(p, "gtk-cursor-theme-name=", 22) == 0) {
+            p += 22; char *end = strchr(p, '\n'); size_t len = end ? (size_t)(end - p) : strlen(p);
+            if (len >= sizeof(g_gtk.cursor)) len = sizeof(g_gtk.cursor) - 1;
+            memcpy(g_gtk.cursor, p, len); g_gtk.cursor[len] = '\0'; strip_quotes_nl(g_gtk.cursor);
+        } else if (!g_gtk.font[0] && strncmp(p, "gtk-font-name=", 14) == 0) {
+            p += 14; char *end = strchr(p, '\n'); size_t len = end ? (size_t)(end - p) : strlen(p);
+            if (len >= sizeof(g_gtk.font)) len = sizeof(g_gtk.font) - 1;
+            memcpy(g_gtk.font, p, len); g_gtk.font[len] = '\0'; strip_quotes_nl(g_gtk.font);
         }
+        while (*p && *p != '\n') p++;
+        if (*p == '\n') p++;
     }
-    fclose(f);
 }
 
 // ════════════════════════════════════════════════════════════
@@ -354,16 +372,26 @@ typedef struct { long mem_total; long mem_avail; long swap_total; long swap_free
 static MemInfo g_mem = {0,0,0,0};
 
 static void parse_meminfo(void) {
-    FILE *f = fopen("/proc/meminfo", "r");
-    if (!f) return;
-    char line[256];
-    while (fgets(line, sizeof(line), f)) {
-        if (!g_mem.mem_total && strncmp(line, "MemTotal:", 9) == 0) sscanf(line, "MemTotal: %ld", &g_mem.mem_total);
-        else if (!g_mem.mem_avail && strncmp(line, "MemAvailable:", 13) == 0) sscanf(line, "MemAvailable: %ld", &g_mem.mem_avail);
-        else if (!g_mem.swap_total && strncmp(line, "SwapTotal:", 10) == 0) sscanf(line, "SwapTotal: %ld", &g_mem.swap_total);
-        else if (!g_mem.swap_free && strncmp(line, "SwapFree:", 9) == 0) sscanf(line, "SwapFree: %ld", &g_mem.swap_free);
+    char buf[4096];
+    if (read_sys_file("/proc/meminfo", buf, sizeof(buf)) <= 0) return;
+    char *p = buf;
+    while (*p) {
+        if (!g_mem.mem_total && strncmp(p, "MemTotal:", 9) == 0) {
+            p += 9; while (*p == ' ' || *p == '\t') p++;
+            g_mem.mem_total = strtol(p, NULL, 10);
+        } else if (!g_mem.mem_avail && strncmp(p, "MemAvailable:", 13) == 0) {
+            p += 13; while (*p == ' ' || *p == '\t') p++;
+            g_mem.mem_avail = strtol(p, NULL, 10);
+        } else if (!g_mem.swap_total && strncmp(p, "SwapTotal:", 10) == 0) {
+            p += 10; while (*p == ' ' || *p == '\t') p++;
+            g_mem.swap_total = strtol(p, NULL, 10);
+        } else if (!g_mem.swap_free && strncmp(p, "SwapFree:", 9) == 0) {
+            p += 9; while (*p == ' ' || *p == '\t') p++;
+            g_mem.swap_free = strtol(p, NULL, 10);
+        }
+        while (*p && *p != '\n') p++;
+        if (*p == '\n') p++;
     }
-    fclose(f);
 }
 
 // ── Live CPU Usage (two-sample /proc/stat) ───────────────────
